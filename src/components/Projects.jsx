@@ -28,7 +28,7 @@ const projects = [
     name: "Nasa Photo of The Day Web App",
     technologies: "HTML, CSS, JavaScript, React.JS, Tailwind",
     image: null,
-    github: "URL",
+    github: "https://dthom26.github.io/nasa-picture-of-the-day/",
   },
   {
     id: 5,
