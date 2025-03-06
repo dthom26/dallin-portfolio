@@ -7,7 +7,7 @@ const projects = [
     name: "Landing Page Sample",
     technologies: "HTML, CSS, JavaScript. Tailwind, React.js",
     image: null,
-    github: "URL",
+    github: "https://dthom26.github.io/landing-page-example/",
   },
   {
     id: 2,
