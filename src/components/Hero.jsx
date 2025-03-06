@@ -10,9 +10,8 @@ export const Hero = () => {
         alt=""
         className="mx-auto mb-8 w-48 h-48 rounded-full object-cover object-top transform  transition-transform duration-300 hover:scale-105"
       /> */}
-      <h1 className="text-4xl font-bold">
-        I'm <span className="text-white">Dallin Thomson</span>, Front-End
-        Developer
+      <h1 className="text-4xl font-semibold text-center text-white font-sora">
+        I'm <span>Dallin Thomson</span>, Front-End Developer
       </h1>
       <p className=" mt-4 text-lg text-gray-300">
         I specialize in building modern and responsize web applications.

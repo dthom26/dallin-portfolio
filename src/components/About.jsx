@@ -25,7 +25,10 @@ export const About = () => {
             </p>
             <div className="space-y-4">
               <div className="flex items-center">
-                <label htmlFor="htmlandcss" className="w-2/12">
+                <label
+                  htmlFor="htmlandcss"
+                  className="w-4/12 sm:w-2/12 flex-shrink-0"
+                >
                   HTML & CSS
                 </label>
                 <div className="grow bg-gray-800 rounded-full h-2.5">
@@ -33,7 +36,10 @@ export const About = () => {
                 </div>
               </div>
               <div className="flex items-center">
-                <label htmlFor="htmlandcss" className="w-2/12">
+                <label
+                  htmlFor="tailwindcss"
+                  className="w-4/12 sm:w-2/12 flex-shrink-0"
+                >
                   Tailwind CSS
                 </label>
                 <div className="grow bg-gray-800 rounded-full h-2.5">
@@ -41,7 +47,10 @@ export const About = () => {
                 </div>
               </div>
               <div className="flex items-center">
-                <label htmlFor="htmlandcss" className="w-2/12">
+                <label
+                  htmlFor="javascript"
+                  className="w-4/12 sm:w-2/12 flex-shrink-0"
+                >
                   JavaScript
                 </label>
                 <div className="grow bg-gray-800 rounded-full h-2.5">
@@ -49,7 +58,10 @@ export const About = () => {
                 </div>
               </div>
               <div className="flex items-center">
-                <label htmlFor="htmlandcss" className="w-2/12">
+                <label
+                  htmlFor="reactjs"
+                  className="w-4/12 sm:w-2/12 flex-shrink-0"
+                >
                   React JS
                 </label>
                 <div className="grow bg-gray-800 rounded-full h-2.5">
