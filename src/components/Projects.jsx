@@ -30,13 +30,13 @@ const projects = [
     image: null,
     github: "https://dthom26.github.io/nasa-picture-of-the-day/",
   },
-  {
-    id: 5,
-    name: "Shopify Site For Fitness Clothing Brand",
-    technologies: "HTML, CSS, JavaScript, Liquid",
-    image: null,
-    github: "URL",
-  },
+  // {
+  //   id: 5,
+  //   name: "Shopify Site For Fitness Clothing Brand",
+  //   technologies: "HTML, CSS, JavaScript, Liquid",
+  //   image: null,
+  //   github: "URL",
+  // },
 ];
 export const Projects = () => {
   return (
