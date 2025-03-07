@@ -1,34 +1,36 @@
 import Button from "./Button";
-import dragonSlayerImage from "../assets/images/dragon-slayer.webp";
+import dragonSlayerImage from "../assets/images/dragon-slayer.png";
+import brainwaveImage from "../assets/images/brainwaveImage.png";
+import nasaPod from "../assets/images/nasaPod.webp";
+import chefAi from "../assets/images/chefAi.png";
 
-import React, { useEffect } from "react";
 const projects = [
   {
     id: 1,
-    name: "Landing Page Sample",
+    name: "Landing Page Template",
     technologies: "HTML, CSS, JavaScript. Tailwind, React.js",
-    image: null,
+    image: brainwaveImage,
     github: "https://dthom26.github.io/landing-page-example/",
   },
   {
     id: 2,
-    name: "Text Based RPG",
+    name: "Dragon Slayer (Text Based RPG)",
     technologies: "HTML, CSS, JavaScript",
-    image: { dragonSlayerImage },
+    image: dragonSlayerImage,
     github: "https://dthom26.github.io/rpg-js/",
   },
   {
     id: 3,
     name: "AI Chef Web App",
     technologies: "HTML, CSS, JavaScript, React.JS, Tailwind",
-    image: null,
+    image: chefAi,
     github: "URL",
   },
   {
     id: 4,
     name: "Nasa Photo of The Day Web App",
     technologies: "HTML, CSS, JavaScript, React.JS, Tailwind",
-    image: null,
+    image: nasaPod,
     github: "https://dthom26.github.io/nasa-picture-of-the-day/",
   },
   // {
