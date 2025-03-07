@@ -12,7 +12,7 @@ const projects = [
   },
   {
     id: 2,
-    name: "Text Based RPG Game",
+    name: "Text Based RPG",
     technologies: "HTML, CSS, JavaScript",
     image: { dragonSlayerImage },
     github: "https://dthom26.github.io/rpg-js/",
