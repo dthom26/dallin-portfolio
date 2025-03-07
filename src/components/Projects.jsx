@@ -14,7 +14,7 @@ const projects = [
     name: "Text Based RPG Game",
     technologies: "HTML, CSS, JavaScript",
     image: null,
-    github: "URL",
+    github: "https://dthom26.github.io/rpg-js/",
   },
   {
     id: 3,
