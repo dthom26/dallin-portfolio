@@ -1,4 +1,5 @@
 import Button from "./Button";
+import dragonSlayerImage from "../assets/images/dragon-slayer.webp";
 
 import React, { useEffect } from "react";
 const projects = [
@@ -13,7 +14,7 @@ const projects = [
     id: 2,
     name: "Text Based RPG Game",
     technologies: "HTML, CSS, JavaScript",
-    image: "../assets/images/dragon-slayer.webp",
+    image: { dragonSlayerImage },
     github: "https://dthom26.github.io/rpg-js/",
   },
   {
