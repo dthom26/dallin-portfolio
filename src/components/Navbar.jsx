@@ -45,9 +45,6 @@ export const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-8 md:gap-12 justify-center flex-1">
-          <a href="#home" className="hover:text-gray-400 px-4 py-2">
-            Home
-          </a>
           <a href="#aboutMe" className="hover:text-gray-400 px-4 py-2">
             About
           </a>
@@ -63,9 +60,6 @@ export const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden mt-4">
-          <a href="#home" className="block hover:text-gray-400 px-4 py-2">
-            Home
-          </a>
           <a href="#aboutMe" className="block hover:text-gray-400 px-4 py-2">
             About
           </a>

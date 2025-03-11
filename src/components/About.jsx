@@ -17,11 +17,18 @@ export const About = () => {
 
           <div className="flex-1">
             <p className="text-lg  text-white mb-8">
-              I'm a web developer passionate about building interactive and
-              user-friendly websites. With a B.S. in Psychology, I enjoy
-              incorporating principles of human behavior and design to create
-              engaging digital experiences. I love finding ways to blend science
-              and technology to build intuitive and impactful web applications.
+              A passionate web developer dedicated to crafting interactive,
+              user-friendly websites that prioritize fluid and engaging user
+              experiences. With a background in Psychology, principles of human
+              behavior and design are thoughtfully integrated into every
+              project, ensuring digital experiences are not only visually
+              appealing but also intuitive and impactful. Expertise lies in
+              blending science and technology to build functional, user-centric
+              web applications that bridge the gap between innovation and
+              usability. Focused on developing solutions that resonate deeply
+              with users, the goal is to create meaningful digital experiences
+              through data-driven design and cutting-edge web development
+              techniques.
             </p>
             <div className="space-y-4">
               <div className="flex items-center">
