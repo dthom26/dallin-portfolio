@@ -24,7 +24,7 @@ const projects = [
     name: "AI Chef Web App",
     technologies: "HTML, CSS, JavaScript, React.JS, Tailwind",
     image: chefAi,
-    github: "URL",
+    github: "https://dthom26.github.io/pocket-chef/",
   },
   {
     id: 4,
