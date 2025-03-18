@@ -9,7 +9,9 @@ function Button({ href, title }) {
     shadow-md shadow-indigo-900/50
     hover:brightness-110 transition"
     >
-      <a href={href}>{title}</a>
+      <a href={href} target="_blank">
+        {title}
+      </a>
     </button>
   );
 }

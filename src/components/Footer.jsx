@@ -27,13 +27,25 @@ export const Footer = () => {
             justify-between items-center"
         >
           <div className="flex space-x-4 my-4 md:my-0">
-            <a href="#" className="text-gray-400 hover:text-white">
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/in/dallin-thomson/"
+              className="text-gray-400 hover:text-white"
+            >
               <FaLinkedin />
             </a>
-            <a href="#" className="text-gray-400 hover:text-white">
+            <a
+              target="_blank"
+              href="https://github.com/dthom26"
+              className="text-gray-400 hover:text-white"
+            >
               <FaGithub />
             </a>
-            <a href="#" className="text-gray-400 hover:text-white">
+            <a
+              target="_blank"
+              href="https://www.upwork.com/freelancers/~01873c0ab84ae9f53d?mp_source=share"
+              className="text-gray-400 hover:text-white"
+            >
               <FaUpwork />
             </a>
           </div>

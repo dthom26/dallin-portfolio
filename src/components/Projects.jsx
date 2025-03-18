@@ -68,7 +68,9 @@ export const Projects = () => {
               >
                 See Project
               </a> */}
-              <Button href={project.github} title={"See Project"} />
+              <div className="flex  justify-center">
+                <Button href={project.github} title={"See Project"} />
+              </div>
             </div>
           ))}
         </div>
