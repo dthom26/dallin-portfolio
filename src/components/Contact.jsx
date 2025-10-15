@@ -1,15 +1,23 @@
 import React from "react";
 import { FaEnvelope, FaPhone } from "react-icons/fa";
+import useScrollReveal, { scrollRevealClass } from "../hooks/useScrollReveal";
 
 export const Contact = () => {
+  const [isVisible, ref] = useScrollReveal({ threshold: 0.2 });
   return (
-    <div className=" text-white py-20" id="contact">
+    <div
+      ref={ref}
+      className={`text-white py-12 md:py-16 ${scrollRevealClass} ${
+        isVisible ? "opacity-100 translate-y-0" : ""
+      }`}
+      id="contact"
+    >
       <div className="container mx-auto px-8 md:px-16 lg:px-24">
         <h2 className="text-4xl font-bold text-center mb-12">Contact Me</h2>
         <div className="flex flex-col md:flex-row items-center md:space-x-12">
           <div className="flex-1">
             <h3 className="text-3xl font-bold bg-clip-text text-gray-100 mb-4">
-              Let's Talk
+              Let&apos;s Talk
             </h3>
 
             <div className="mb-4 mt-4 ">

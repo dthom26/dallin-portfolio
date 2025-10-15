@@ -1,10 +1,17 @@
-import React from "react";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub, FaUpwork } from "react-icons/fa6";
+import useScrollReveal, { scrollRevealClass } from "../hooks/useScrollReveal";
 
 export const Footer = () => {
+  const [isVisible, ref] = useScrollReveal({ threshold: 0.2 });
+
   return (
-    <footer className=" text-white py-8">
+    <footer
+      ref={ref}
+      className={`text-white py-8 ${scrollRevealClass} ${
+        isVisible ? "opacity-100 translate-y-0" : ""
+      }`}
+    >
       <div className="container mx-auto px-8 md:px-16 lg:px-24">
         <div className="flex flex-col md:flex-row md:space-x-12 items-center mb-4">
           {/* <div className="flex-1 mb-4 md:mb-0">

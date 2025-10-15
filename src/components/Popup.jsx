@@ -1,15 +1,25 @@
 import React from "react";
 
-const PopupModal = ({ isOpen, onClose }) => {
-  if (!isOpen) return null; // Don't render the modal if isOpen is false
+const Popup = ({ isOpen, onClose, project }) => {
+  if (!isOpen || !project) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30 z-50">
-      <div className="bg-white rounded-2xl p-8 max-w-2xl w-full mx-4 relative shadow-lg">
+    <div
+      className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50"
+      onClick={onClose}
+      role="presentation"
+    >
+      <div
+        className="bg-white rounded-2xl p-4 sm:p-8 max-w-xs sm:max-w-md md:max-w-2xl w-full mx-2 sm:mx-4 relative shadow-lg overflow-y-auto max-h-[90vh]"
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          boxSizing: "border-box",
+        }}
+      >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 transition-colors"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 text-gray-600 hover:text-gray-900 transition-colors"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -28,63 +38,53 @@ const PopupModal = ({ isOpen, onClose }) => {
         </button>
 
         {/* Modal Content */}
-        <h2 className="text-[2rem] font-bold mb-4 text-gray-900">
-          Welcome to My AI Chef App
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900">
+          {project.name}
         </h2>
-        <p className="text-gray-600 mb-6">
-          Pocket Chef is a React-based web application that uses AI to generate
-          personalized recipes from user-provided ingredients. It demonstrates
-          my ability to combine modern web development with AI to create
-          innovative, user-friendly solutions.
+        <img
+          src={project.image}
+          alt={project.name}
+          className="rounded-lg mb-4 w-full h-32 sm:h-40 object-cover"
+        />
+        <p className="text-gray-600 mb-6 text-sm sm:text-base">
+          {project.description}
         </p>
 
         {/* Key Skills Section */}
-        <div className="mb-6">
-          <h3 className="text-[1.5rem] font-semibold mb-2 text-gray-900">
-            Key Skills Demonstrated
-          </h3>
-          <ul className="flex flex-wrap gap-2">
-            {[
-              "React",
-              "State Management",
-              "AI Integration",
-              "API Calls",
-              "Prompt Engineering",
-              "UI/UX Design",
-              "Asynchronous Programming",
-              "Functional Programming",
-              "Error Handling",
-              "Project Organization",
-            ].map((skill, index) => (
-              <li
-                key={index}
-                className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm"
-              >
-                {skill}
-              </li>
-            ))}
-          </ul>
-        </div>
+        {project.skills && (
+          <div className="mb-6">
+            <h3 className="text-base sm:text-[1.2rem] font-semibold mb-2 text-gray-900">
+              Key Skills Demonstrated
+            </h3>
+            <ul className="flex flex-wrap gap-2">
+              {project.skills.map((skill, index) => (
+                <li
+                  key={index}
+                  className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs sm:text-sm"
+                >
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {/* Features Section */}
-        <div>
-          <h3 className="text-[1.5rem] font-semibold mb-2 text-gray-900">
-            Features
-          </h3>
-          <ul className="list-disc list-inside text-gray-600">
-            <li>Add, remove, and clear ingredients dynamically.</li>
-            <li>
-              AI-generated recipes formatted in markdown for easy readability.
-            </li>
-            <li>
-              Smooth scrolling and modal interactions for enhanced user
-              experience.
-            </li>
-          </ul>
-        </div>
+        {project.features && (
+          <div>
+            <h3 className="text-base sm:text-[1.2rem] font-semibold mb-2 text-gray-900">
+              Features
+            </h3>
+            <ul className="list-disc list-inside text-gray-600 text-sm sm:text-base">
+              {project.features.map((feature, index) => (
+                <li key={index}>{feature}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
-export default PopupModal;
+export default Popup;

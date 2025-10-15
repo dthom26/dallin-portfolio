@@ -1,22 +1,62 @@
 import React from "react";
+import useScrollReveal, { scrollRevealClass } from "../hooks/useScrollReveal";
+import useScrollRevealOnce from "../hooks/useScrollRevealOnce";
 import ProfilePic from "../assets/images/ProfilePic.png";
-export const About = () => {
+import { FaReact, FaJs, FaNodeJs, FaHtml5, FaCss3Alt } from "react-icons/fa";
+import { RiTailwindCssFill } from "react-icons/ri";
+import { SiExpress } from "react-icons/si";
+import { BiLogoMongodb } from "react-icons/bi";
+import { SiFirebase } from "react-icons/si";
+
+function TechCard({ tech, idx }) {
+  const [cardVisible, cardRef] = useScrollRevealOnce({ threshold: 0.2 });
+  const Icon = tech.icon;
   return (
-    <div className=" text-white py-20" id="aboutMe">
+    <div
+      ref={cardRef}
+      className={`flex flex-col items-center transition-all duration-700
+        ${
+          cardVisible
+            ? "opacity-100 scale-100 translate-y-0"
+            : "opacity-0 scale-90 translate-y-8"
+        }`}
+      style={{ transitionDelay: `${idx * 0.1}s` }}
+    >
+      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-lg mb-2 hover:scale-110 hover:shadow-2xl">
+        {Icon ? (
+          <Icon className="w-10 h-10 text-white" />
+        ) : (
+          <span className="text-white text-xl font-bold">?</span>
+        )}
+      </div>
+      <span className="text-sm text-white font-medium text-center whitespace-nowrap">
+        {tech.name}
+      </span>
+    </div>
+  );
+}
+
+export const About = () => {
+  const [isVisible, ref] = useScrollReveal({ threshold: 0.2 });
+  return (
+    <div
+      ref={ref}
+      className={`text-white py-12 md:py-16 ${scrollRevealClass} ${
+        isVisible ? "opacity-100 translate-y-0" : ""
+      }`}
+      id="aboutMe"
+    >
       <div className="container mx-auto px-8 md:px-16 lg:px-24">
-        {/* <h2 className="text-4xl font-bold text-center mb-12">
-        </h2> */}
         <div className="flex flex-col md:flex-row items-center md:space-x-12">
-          <div className="w-72 aspect-[3/4] relative overflow-hidden">
+          <div className="w-72 aspect-[3/4] relative overflow-hidden mb-8 md:mb-0">
             <img
               src={ProfilePic}
               alt="Profile"
               className="w-full h-full rounded object-cover object-[50%_15%] scale-[0.95]"
             />
           </div>
-
           <div className="flex-1">
-            <p className="text-lg  text-white mb-8">
+            <p className="text-lg text-white mb-8">
               A passionate web developer dedicated to crafting interactive,
               user-friendly websites that prioritize fluid and engaging user
               experiences. With a background in Psychology, principles of human
@@ -30,67 +70,31 @@ export const About = () => {
               through data-driven design and cutting-edge web development
               techniques.
             </p>
-            <div className="space-y-4">
-              <div className="flex items-center">
-                <label
-                  htmlFor="htmlandcss"
-                  className="w-4/12 sm:w-2/12 flex-shrink-0"
-                >
-                  HTML & CSS
-                </label>
-                <div className="grow bg-gray-800 rounded-full h-2.5">
-                  <div className="bg-gradient-to-br from-slate-100 via-sky-100 to-slate-300 h-2.5 rounded-full transform transition-transform duration-300 hover:scale-105 w-10/12"></div>
-                </div>
-              </div>
-              <div className="flex items-center">
-                <label
-                  htmlFor="tailwindcss"
-                  className="w-4/12 sm:w-2/12 flex-shrink-0"
-                >
-                  Tailwind CSS
-                </label>
-                <div className="grow bg-gray-800 rounded-full h-2.5">
-                  <div className="bg-gradient-to-br from-slate-100 via-sky-100 to-slate-300 h-2.5 rounded-full transform transition-transform duration-300 hover:scale-105 w-10/12"></div>
-                </div>
-              </div>
-              <div className="flex items-center">
-                <label
-                  htmlFor="javascript"
-                  className="w-4/12 sm:w-2/12 flex-shrink-0"
-                >
-                  JavaScript
-                </label>
-                <div className="grow bg-gray-800 rounded-full h-2.5">
-                  <div className="bg-gradient-to-br from-slate-100 via-sky-100 to-slate-300 h-2.5 rounded-full transform transition-transform duration-300 hover:scale-105 w-10/12"></div>
-                </div>
-              </div>
-              <div className="flex items-center">
-                <label
-                  htmlFor="reactjs"
-                  className="w-4/12 sm:w-2/12 flex-shrink-0"
-                >
-                  React JS
-                </label>
-                <div className="grow bg-gray-800 rounded-full h-2.5">
-                  <div className="bg-gradient-to-br from-slate-100 via-sky-100 to-slate-300 h-2.5 rounded-full transform transition-transform duration-300 hover:scale-105 w-11/12"></div>
-                </div>
-              </div>
-
-              {/* <div className="mt-12 flex justify-evenly text-center">
-                <div>
-                  <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
-                    2 +
-                  </h3>
-                  <p>Years Experience</p>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
-                    10 +
-                  </h3>
-                  <p>Projects Compeleted</p>
-                </div>
-              </div> */}
-            </div>
+          </div>
+        </div>
+        {/* Technologies row below profile and about text */}
+        <div className="space-y-8 mt-12">
+          <h3 className="text-2xl font-bold text-white mb-6 text-center">
+            Technologies
+          </h3>
+          <div className="flex flex-wrap gap-6 justify-center items-center">
+            {[
+              { name: "HTML", key: "html", icon: FaHtml5 },
+              { name: "CSS", key: "css", icon: FaCss3Alt },
+              {
+                name: "Tailwind CSS",
+                key: "tailwind",
+                icon: RiTailwindCssFill,
+              },
+              { name: "JavaScript", key: "js", icon: FaJs },
+              { name: "React JS", key: "react", icon: FaReact },
+              { name: "Node.js", key: "node", icon: FaNodeJs },
+              { name: "Express", key: "express", icon: SiExpress },
+              { name: "MongoDB", key: "mongodb", icon: BiLogoMongodb },
+              { name: "Firebase", key: "firebase", icon: SiFirebase },
+            ].map((tech, idx) => (
+              <TechCard key={tech.key} tech={tech} idx={idx} />
+            ))}
           </div>
         </div>
       </div>
