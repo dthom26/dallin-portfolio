@@ -38,7 +38,7 @@ export const Hero = () => {
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold font-sora leading-tight">
             <span className="block mb-2">Hi, I&apos;m</span>
             <span
-              className="block bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 
+              className="block bg-gradient-to-r from-emerald-400 to-teal-500 
                            bg-clip-text text-transparent mb-4"
             >
               Dallin Thomson

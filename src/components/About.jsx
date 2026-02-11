@@ -22,7 +22,7 @@ function TechCard({ tech, idx }) {
         }`}
       style={{ transitionDelay: `${idx * 0.1}s` }}
     >
-      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-lg mb-2 hover:scale-110 hover:shadow-2xl">
+      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-500 flex items-center justify-center shadow-lg mb-2 hover:scale-110 hover:shadow-2xl">
         {Icon ? (
           <Icon className="w-10 h-10 text-white" />
         ) : (

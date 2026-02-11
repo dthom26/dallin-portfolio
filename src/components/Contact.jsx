@@ -22,9 +22,7 @@ export const Contact = () => {
 
             <div className="mb-4 mt-4 ">
               <FaEnvelope className="inline-block  text-gray-100] mr-2" />
-              <a href="dallin.thomson@gmail.com" className="hover:underline">
-                dallin.thomson@gmail.com
-              </a>
+              <span className="hover:underline">dallin.thomson@gmail.com</span>
             </div>
             <div className="mb-4 ">
               <FaPhone className="inline-block  text-gray-100 mr-2" />
@@ -65,7 +63,7 @@ export const Contact = () => {
                 />
               </div>
               <button
-                className="bg-gradient-to-r from-green-400 to-blue-500 text-white hidden md:inline
+                className="bg-gradient-to-r from-emerald-400 to-teal-500 text-white hidden md:inline
                             transition-transform duration-300 hover:scale-105 px-8 py-2 rounded-full"
               >
                 Send

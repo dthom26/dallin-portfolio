@@ -8,6 +8,7 @@ import { Navbar } from "./components/Navbar.jsx";
 import Popup from "./components/Popup.jsx";
 import Projects from "./components/Projects.jsx";
 import Experience from "./components/Experience.jsx";
+import Reviews from "./Features/Reviews/Reviews.jsx";
 import React from "react";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Experience />
         {/* Pass modal handlers to Projects */}
         <Projects onInfo={handleInfo} />
+        <Reviews />
         <Contact />
         <Footer />
       </div>

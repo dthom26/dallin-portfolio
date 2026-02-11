@@ -4,8 +4,78 @@ import caffined from "../assets/images/caffiend-pic.png";
 import chefAi from "../assets/images/chefAi.png";
 import dragonSlayerImage from "../assets/images/dragon-slayer.png";
 import brainwaveImage from "../assets/images/brainwaveImage.png";
+import ScreenShot from "../assets/images/Screenshot.png";
+import cardCoverPic from "../assets/images/card cover pic.png";
 
 const projects = [
+  {
+    id: 7,
+    name: "Student Scheduler - Full Stack Application",
+    technologies: "React, TypeScript, Node.js, Express.js, MongoDB, JWT",
+    image: cardCoverPic,
+    github: "https://github.com/dthom26/student-scheduler",
+    description:
+      "A comprehensive full-stack scheduling application that enables students to submit weekly availability and allows managers to view and coordinate schedules across multiple students efficiently.",
+    features: [
+      "Dual role authentication system (Student & Manager)",
+      "Interactive weekly availability grid with time slot selection",
+      "Color-coded scheduling system (Available, Not Available, Class, Preferred Shift)",
+      "Real-time manager dashboard for multi-student schedule coordination",
+      "Single day and week view modes for flexibility",
+      "Student filtering and search functionality",
+      "Secure JWT token-based authentication",
+      "MongoDB database for persistent data storage",
+      "Deployed on GitHub Pages (frontend) and Render (backend)",
+    ],
+    skills: [
+      "React 19",
+      "TypeScript",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Mongoose",
+      "JWT Authentication",
+      "bcryptjs Password Hashing",
+      "Helmet.js Security",
+      "REST API Design",
+      "Component Architecture",
+      "Full-Stack Development",
+      "Database Modeling",
+      "Deployment & DevOps",
+    ],
+  },
+  {
+    id: 2,
+    name: "Fitness Tracker Application (In Development)",
+    technologies: "React, Firebase, Firestore, Vite, JavaScript",
+    image: ScreenShot, // You'll want to update this image reference
+    github: "https://dthom26.github.io/my-workout-tracker/",
+    description:
+      "A comprehensive workout tracking application that enables users to create custom fitness programs, track workout sessions, and monitor progress over time. Features a multi-step program builder, real-time session tracking with exercise completion status, and week-by-week workout organization with historical data comparison.",
+    features: [
+      "Custom workout program creation with multi-step builder",
+      "Real-time session tracking with set/rep completion",
+      "Week-by-week program organization and progression",
+      "Previous session data comparison",
+      "Firebase Firestore database integration",
+      "User authentication (Email/Password & Google Sign-In)",
+      "Exercise template management",
+      "Dynamic workout editing and customization",
+    ],
+    skills: [
+      "React",
+      "Firebase",
+      "Firestore Database",
+      "Repository Pattern",
+      "Data Modeling",
+      "State Management",
+      "React Router",
+      "Authentication",
+      "UI/UX Design",
+      "Context API",
+      "Form Validation",
+    ],
+  },
   {
     id: 1,
     name: "Dashboard For Health Sciences Library at University of Houston",
@@ -45,7 +115,7 @@ const projects = [
     skills: ["React", "CSS", "Content Management", "Responsive Design"],
   },
   {
-    id: 2,
+    id: 3,
     name: "Coffee Tracker Full Stack React App",
     technologies: "HTML, CSS, JavaScript, React.JS, Firebase",
     image: caffined,
@@ -61,26 +131,13 @@ const projects = [
     skills: ["React", "Firebase", "Authentication", "State Management"],
   },
   {
-    id: 3,
-    name: "AI Chef Web App",
-    technologies: "HTML, CSS, JavaScript, React.JS, Tailwind",
-    image: chefAi,
-    github: "https://dthom26.github.io/pocket-chef/",
+    id: 5,
+    name: "Landing Page Template",
+    technologies: "HTML, CSS, JavaScript. Tailwind, React.js",
+    image: brainwaveImage,
+    github: "https://dthom26.github.io/landing-page-example/",
     description:
-      "Generate recipes and meal plans using AI, with a clean and responsive UI.",
-    features: [
-      "AI-powered recipe generation",
-      "Ingredient input",
-      "Markdown recipe formatting",
-      "Smooth modal interactions",
-    ],
-    skills: [
-      "React",
-      "AI Integration",
-      "API Calls",
-      "Prompt Engineering",
-      "UI/UX Design",
-    ],
+      "A modern, responsive landing page template for startups and SaaS products.",
   },
   {
     id: 4,
@@ -97,15 +154,6 @@ const projects = [
       "Multiple endings",
     ],
     skills: ["JavaScript", "Game Logic", "State Management"],
-  },
-  {
-    id: 5,
-    name: "Landing Page Template",
-    technologies: "HTML, CSS, JavaScript. Tailwind, React.js",
-    image: brainwaveImage,
-    github: "https://dthom26.github.io/landing-page-example/",
-    description:
-      "A modern, responsive landing page template for startups and SaaS products.",
   },
 ];
 
