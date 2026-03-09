@@ -114,22 +114,22 @@ const projects = [
     ],
     skills: ["React", "CSS", "Content Management", "Responsive Design"],
   },
-  {
-    id: 3,
-    name: "Coffee Tracker Full Stack React App",
-    technologies: "HTML, CSS, JavaScript, React.JS, Firebase",
-    image: caffined,
-    github: "https://dthom26.github.io/caffiend-coffee-tracker/",
-    description:
-      "Track your daily coffee intake and preferences with this full stack React and Firebase app.",
-    features: [
-      "User authentication",
-      "Daily coffee log",
-      "Firebase backend",
-      "Statistics dashboard",
-    ],
-    skills: ["React", "Firebase", "Authentication", "State Management"],
-  },
+  // {
+  //   id: 3,
+  //   name: "Coffee Tracker Full Stack React App",
+  //   technologies: "HTML, CSS, JavaScript, React.JS, Firebase",
+  //   image: caffined,
+  //   github: "https://dthom26.github.io/caffiend-coffee-tracker/",
+  //   description:
+  //     "Track your daily coffee intake and preferences with this full stack React and Firebase app.",
+  //   features: [
+  //     "User authentication",
+  //     "Daily coffee log",
+  //     "Firebase backend",
+  //     "Statistics dashboard",
+  //   ],
+  //   skills: ["React", "Firebase", "Authentication", "State Management"],
+  // },
   {
     id: 5,
     name: "Landing Page Template",
@@ -139,22 +139,22 @@ const projects = [
     description:
       "A modern, responsive landing page template for startups and SaaS products.",
   },
-  {
-    id: 4,
-    name: "Dragon Slayer (Text Based RPG)",
-    technologies: "HTML, CSS, JavaScript",
-    image: dragonSlayerImage,
-    github: "https://dthom26.github.io/rpg-js/",
-    description:
-      "A text-based RPG game built with vanilla JavaScript, featuring turn-based combat and story progression.",
-    features: [
-      "Turn-based combat",
-      "Story progression",
-      "Inventory system",
-      "Multiple endings",
-    ],
-    skills: ["JavaScript", "Game Logic", "State Management"],
-  },
+  // {
+  //   id: 4,
+  //   name: "Dragon Slayer (Text Based RPG)",
+  //   technologies: "HTML, CSS, JavaScript",
+  //   image: dragonSlayerImage,
+  //   github: "https://dthom26.github.io/rpg-js/",
+  //   description:
+  //     "A text-based RPG game built with vanilla JavaScript, featuring turn-based combat and story progression.",
+  //   features: [
+  //     "Turn-based combat",
+  //     "Story progression",
+  //     "Inventory system",
+  //     "Multiple endings",
+  //   ],
+  //   skills: ["JavaScript", "Game Logic", "State Management"],
+  // },
 ];
 
 export default projects;

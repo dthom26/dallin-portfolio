@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Button from "./Button";
-import { Info, ChevronLeft, ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import useScrollReveal, { scrollRevealClass } from "../hooks/useScrollReveal";
 import useScrollRevealOnce from "../hooks/useScrollRevealOnce";
 
@@ -9,8 +9,9 @@ function ProjectCard3D({
   position,
   totalCards,
   currentIndex,
-  onInfo,
 }) {
+  const navigate = useNavigate();
+  
   // Calculate the angle for each card in the circle
   const anglePerCard = 360 / totalCards;
   const angle = (position - currentIndex) * anglePerCard;
@@ -34,6 +35,10 @@ function ProjectCard3D({
   // Z-index: front card on top
   const zIndex = isFront ? 50 : isNearFront ? 30 : 10;
 
+  const handleSeeProject = () => {
+    navigate(`/project/${project.id}`);
+  };
+
   return (
     <div
       className="absolute w-64 transition-all duration-700 ease-in-out"
@@ -49,13 +54,6 @@ function ProjectCard3D({
       }}
     >
       <div className="bg-slate-900/90 border border-emerald-400/20 rounded-xl p-4 shadow-lg shadow-emerald-900/30 hover:bg-slate-900/95 transition hover:shadow-xl transform hover:scale-105 relative backface-hidden">
-        <button
-          className="absolute top-3 right-3 text-emerald-300 hover:text-white bg-slate-700 rounded-full p-1.5 shadow z-10"
-          onClick={() => onInfo(project)}
-          aria-label="More Info"
-        >
-          <Info className="w-4 h-4" />
-        </button>
         <img
           src={project.image}
           alt={project.name}
@@ -64,14 +62,19 @@ function ProjectCard3D({
         <h3 className="text-lg font-bold mb-2 text-white">{project.name}</h3>
         <p className="text-gray-400 text-sm mb-3">{project.technologies}</p>
         <div className="flex justify-center">
-          <Button href={project.github} title={"See Project"} />
+          <button
+            onClick={handleSeeProject}
+            className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-2 rounded hover:from-emerald-600 hover:to-teal-600 transition-all transform hover:scale-105 shadow-md text-sm font-semibold"
+          >
+            See Project
+          </button>
         </div>
       </div>
     </div>
   );
 }
 
-export default function ProjectCarousel3D({ projects, onInfo }) {
+export default function ProjectCarousel3D({ projects }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
@@ -137,7 +140,7 @@ export default function ProjectCarousel3D({ projects, onInfo }) {
             titleVisible ? "opacity-100 translate-y-0" : ""
           }`}
         >
-          <h2 className="text-4xl font-bold text-center mb-16">Projects</h2>
+          <h2 className="text-4xl font-bold text-center mb-16">Featured Work</h2>
         </div>
 
         {/* Animated Carousel */}
@@ -185,7 +188,6 @@ export default function ProjectCarousel3D({ projects, onInfo }) {
                     position={idx}
                     totalCards={projects.length}
                     currentIndex={currentIndex}
-                    onInfo={onInfo}
                   />
                 ))}
               </div>

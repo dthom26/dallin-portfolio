@@ -5,8 +5,9 @@ import useScrollReveal, { scrollRevealClass } from "../hooks/useScrollReveal";
 
 export const Hero = () => {
   const typewriterTexts = [
+    "Full-Stack Development",
     "Web Development",
-    "Frontend Design",
+    "Shopify Development",
     "React Applications",
     "User Experience",
     "Modern Web Solutions",
@@ -59,7 +60,7 @@ export const Hero = () => {
           </div>
 
           <p className="mt-8 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            I create modern, responsive web applications that deliver seamless,
+            I create modern, responsive full-stack web applications that deliver seamless,
             user-friendly experiences with a focus on innovation and usability.
           </p>
 

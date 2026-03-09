@@ -57,18 +57,10 @@ export const About = () => {
           </div>
           <div className="flex-1">
             <p className="text-lg text-white mb-8">
-              A passionate web developer dedicated to crafting interactive,
-              user-friendly websites that prioritize fluid and engaging user
-              experiences. With a background in Psychology, principles of human
-              behavior and design are thoughtfully integrated into every
-              project, ensuring digital experiences are not only visually
-              appealing but also intuitive and impactful. Expertise lies in
-              blending science and technology to build functional, user-centric
-              web applications that bridge the gap between innovation and
-              usability. Focused on developing solutions that resonate deeply
-              with users, the goal is to create meaningful digital experiences
-              through data-driven design and cutting-edge web development
-              techniques.
+              I&apos;m a full-stack developer who builds web applications that actually solve business problems. With a background in psychology, I don&apos;t just code features—I design experiences that make sense to your users and drive real results.
+            </p>
+            <p className="text-lg text-white mb-8">
+              Whether you need a custom web app, a Shopify e-commerce store, or a complete full-stack solution, I handle everything from the frontend to the backend. You get direct communication, clean code, and a partner who cares about your success.
             </p>
           </div>
         </div>
@@ -103,3 +95,15 @@ export const About = () => {
 };
 
 export default About;
+// A passionate web developer dedicated to crafting interactive,
+//               user-friendly websites that prioritize fluid and engaging user
+//               experiences. With a background in Psychology, principles of human
+//               behavior and design are thoughtfully integrated into every
+//               project, ensuring digital experiences are not only visually
+//               appealing but also intuitive and impactful. Expertise lies in
+//               blending science and technology to build functional, user-centric
+//               web applications that bridge the gap between innovation and
+//               usability. Focused on developing solutions that resonate deeply
+//               with users, the goal is to create meaningful digital experiences
+//               through data-driven design and cutting-edge web development
+//               techniques.

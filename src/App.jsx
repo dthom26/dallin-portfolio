@@ -1,4 +1,5 @@
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
 
 import About from "./components/About.jsx";
 import Contact from "./components/Contact.jsx";
@@ -9,7 +10,25 @@ import Popup from "./components/Popup.jsx";
 import Projects from "./components/Projects.jsx";
 import Experience from "./components/Experience.jsx";
 import Reviews from "./Features/Reviews/Reviews.jsx";
+import ServicesOverview from "./Features/Reviews/ServicesOverview/ServicesOverview.jsx";
+import ProjectDetail from "./components/ProjectDetail.jsx";
 import React from "react";
+
+function HomePage() {
+  return (
+    <>
+      <Navbar />
+      <Hero />
+      <About />
+      <ServicesOverview />
+      <Experience />
+      <Projects />
+      <Reviews />
+      <Contact />
+      <Footer />
+    </>
+  );
+}
 
 function App() {
   const [popupOpen, setPopupOpen] = React.useState(false);
@@ -27,17 +46,10 @@ function App() {
 
   return (
     <>
-      <div>
-        <Navbar />
-        <Hero />
-        <About />
-        <Experience />
-        {/* Pass modal handlers to Projects */}
-        <Projects onInfo={handleInfo} />
-        <Reviews />
-        <Contact />
-        <Footer />
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/project/:projectId" element={<ProjectDetail />} />
+      </Routes>
       <Popup
         isOpen={popupOpen}
         onClose={handleClose}

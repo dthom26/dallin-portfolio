@@ -1,0 +1,115 @@
+/* ============================================================================
+   Service Card Styles - Glassmorphic Design
+   ============================================================================ */
+
+.serviceCard {
+    background: rgba(15, 27, 46, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+/* Top Accent Border */
+.serviceCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #34d399, #14b8a6);
+    transition: height 0.3s ease;
+}
+
+/* Hover Effects */
+.serviceCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(52, 211, 153, 0.3);
+}
+
+.serviceCard:hover::before {
+    height: 4px;
+}
+
+/* Icon Container */
+.icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #34d399;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.serviceCard:hover .icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Title */
+.title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    font-family: var(--font-sora, Sora, sans-serif);
+    line-height: 1.4;
+}
+
+/* Description */
+.description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #d1d5db;
+    margin: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .serviceCard {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .title {
+        font-size: 1.1rem;
+    }
+
+    .description {
+        font-size: 0.85rem;
+    }
+
+    .icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .serviceCard {
+        padding: 1.5rem 1rem;
+    }
+
+    .title {
+        font-size: 1rem;
+    }
+
+    .description {
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+}

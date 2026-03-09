@@ -9,7 +9,7 @@ const reviewsData = [
     company: "Kwartler Lab",
     // avatar: "https://i.pravatar.cc/150?img=1", // Placeholder avatar service
     // rating: 5,
-    text: "Working with Dallin to build our lab website was such a good experience and I cannot recommend him enough! He was detailed oriented, and always quick with updates. He made everything easy ti understand and the site turned out even better than I expected! I really appreciated how organized and open to feed/last minute changes he was. Thank you again for being so easy to work with!",
+    text: "Working with Dallin to build our lab website was such a good experience and I cannot recommend him enough! He was detailed oriented, and always quick with updates. He made everything easy to understand and the site turned out even better than I expected! I really appreciated how organized and open to feedback and last minute changes he was. Thank you again for being so easy to work with!",
     // date: "2025-12-15",
     project: "Custom Website for Research Lab",
   },

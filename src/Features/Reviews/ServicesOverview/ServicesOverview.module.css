@@ -1,0 +1,252 @@
+/* ============================================================================
+   Services Overview Section Styles - Matching Site Theme
+   ============================================================================ */
+
+/* Section Container */
+.servicesSection {
+    padding: 4rem 2rem;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Section Heading */
+.heading {
+    font-size: 2.25rem;
+    font-weight: 700;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 3rem;
+    font-family: var(--font-sora, Sora, sans-serif);
+    animation: fadeInDown 0.8s ease-out;
+}
+
+/* Services Grid */
+.servicesGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Center last 2 cards on desktop (3-column layout) */
+@media (min-width: 1025px) {
+    /* Create a 6-column grid for better centering control */
+    .servicesGrid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    
+    /* First 3 cards span 2 columns each */
+    .servicesGrid > :nth-child(1),
+    .servicesGrid > :nth-child(2),
+    .servicesGrid > :nth-child(3) {
+        grid-column: span 2;
+    }
+    
+    /* Card 4: start at column 2, span 2 */
+    .servicesGrid > :nth-child(4) {
+        grid-column: 2 / span 2;
+    }
+
+    /* Card 5: start at column 4, span 2 */
+    .servicesGrid > :nth-child(5) {
+        grid-column: 4 / span 2;
+    }
+}
+
+/* Responsive Grid */
+@media (max-width: 1024px) {
+    .servicesGrid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem;
+    }
+
+    /* Reset desktop grid spans */
+    .servicesGrid > :nth-child(1),
+    .servicesGrid > :nth-child(2),
+    .servicesGrid > :nth-child(3),
+    .servicesGrid > :nth-child(4) {
+        grid-column: auto;
+        margin-left: 0;
+    }
+
+    /* Center the last card on tablet (2-column layout) */
+    .servicesGrid > :nth-child(5) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        max-width: calc(50% - 0.75rem);
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .servicesGrid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.25rem;
+    }
+
+    /* Reset desktop grid spans */
+    .servicesGrid > :nth-child(1),
+    .servicesGrid > :nth-child(2),
+    .servicesGrid > :nth-child(3),
+    .servicesGrid > :nth-child(4) {
+        grid-column: auto;
+        margin-left: 0;
+    }
+
+    /* Center the last card on smaller tablets too */
+    .servicesGrid > :nth-child(5) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        max-width: calc(50% - 0.625rem);
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .heading {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .servicesSection {
+        padding: 3rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .servicesGrid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+
+    /* Reset all custom positioning on mobile */
+    .servicesGrid > :nth-child(1),
+    .servicesGrid > :nth-child(2),
+    .servicesGrid > :nth-child(3),
+    .servicesGrid > :nth-child(4),
+    .servicesGrid > :nth-child(5) {
+        grid-column: 1 / -1;
+        justify-self: stretch;
+        max-width: none;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .heading {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+    }
+
+    .servicesSection {
+        padding: 2.5rem 1rem;
+    }
+}
+
+/* ============================================================================
+   CTA Button
+   ============================================================================ */
+
+.ctaContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    animation: fadeInUp 1.2s ease-out;
+}
+
+.ctaButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: var(--font-sora, Sora, sans-serif);
+    color: #ffffff;
+    background: linear-gradient(135deg, #34d399, #14b8a6);
+    border: 2px solid transparent;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(52, 211, 153, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.ctaButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.ctaButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(52, 211, 153, 0.5);
+    background: linear-gradient(135deg, #14b8a6, #0d9488);
+}
+
+.ctaButton:hover::before {
+    left: 100%;
+}
+
+.ctaButton:active {
+    transform: translateY(0);
+}
+
+/* Responsive CTA */
+@media (max-width: 768px) {
+    .ctaContainer {
+        margin-top: 2.5rem;
+    }
+
+    .ctaButton {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .ctaContainer {
+        margin-top: 2rem;
+    }
+
+    .ctaButton {
+        padding: 0.75rem 1.75rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -26,7 +26,7 @@ export const Contact = () => {
             </div>
             <div className="mb-4 ">
               <FaPhone className="inline-block  text-gray-100 mr-2" />
-              <span>214-687-7003</span>
+              <span>(346) 297-0003</span>
             </div>
           </div>
           {/* <div className="flex-1 w-full">
