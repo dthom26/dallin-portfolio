@@ -137,7 +137,10 @@ export default function ImageViewer({
               <div
                 ref={containerRef}
                 className="flex w-full transition-transform duration-500"
-                style={{ transform: `translateX(-${index * 100}%)`, touchAction: "none" }}
+                style={{
+                  transform: `translateX(-${index * 100}%)`,
+                  touchAction: "none",
+                }}
               >
                 {normalizedImages.map((img, i) => (
                   <div key={i} className="w-full flex-shrink-0 relative">
