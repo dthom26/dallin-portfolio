@@ -69,21 +69,30 @@ export default function ImageViewer({
     return () => window.removeEventListener("keydown", onKey);
   }, [normalizedImages.length]);
 
-  // touch / swipe
+  // touch / swipe — uses pointer capture so events stay on the element even
+  // when the finger moves outside; touch-action:none on the strip prevents
+  // the browser from stealing the gesture for page scroll.
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
     let startX = 0;
     let delta = 0;
+    let active = false;
+
     function onPointerDown(e) {
-      startX = e.clientX || e.touches?.[0]?.clientX || 0;
+      startX = e.clientX;
+      delta = 0;
+      active = true;
+      el.setPointerCapture(e.pointerId);
       el.style.transition = "none";
     }
     function onPointerMove(e) {
-      const x = e.clientX || e.touches?.[0]?.clientX || 0;
-      delta = x - startX;
+      if (!active) return;
+      delta = e.clientX - startX;
     }
     function onPointerUp() {
+      if (!active) return;
+      active = false;
       el.style.transition = "transform 400ms ease";
       if (Math.abs(delta) > 50) {
         if (delta < 0)
@@ -92,13 +101,21 @@ export default function ImageViewer({
       }
       delta = 0;
     }
+    function onPointerCancel() {
+      active = false;
+      el.style.transition = "transform 400ms ease";
+      delta = 0;
+    }
+
     el.addEventListener("pointerdown", onPointerDown);
-    window.addEventListener("pointermove", onPointerMove);
-    window.addEventListener("pointerup", onPointerUp);
+    el.addEventListener("pointermove", onPointerMove);
+    el.addEventListener("pointerup", onPointerUp);
+    el.addEventListener("pointercancel", onPointerCancel);
     return () => {
       el.removeEventListener("pointerdown", onPointerDown);
-      window.removeEventListener("pointermove", onPointerMove);
-      window.removeEventListener("pointerup", onPointerUp);
+      el.removeEventListener("pointermove", onPointerMove);
+      el.removeEventListener("pointerup", onPointerUp);
+      el.removeEventListener("pointercancel", onPointerCancel);
     };
   }, [normalizedImages.length]);
 
@@ -120,7 +137,7 @@ export default function ImageViewer({
               <div
                 ref={containerRef}
                 className="flex w-full transition-transform duration-500"
-                style={{ transform: `translateX(-${index * 100}%)` }}
+                style={{ transform: `translateX(-${index * 100}%)`, touchAction: "none" }}
               >
                 {normalizedImages.map((img, i) => (
                   <div key={i} className="w-full flex-shrink-0 relative">
@@ -142,9 +159,9 @@ export default function ImageViewer({
                 ))}
               </div>
 
-              {/* Slide counter badge — top-left */}
+              {/* Slide counter badge — top-left, desktop only */}
               {normalizedImages.length > 1 && (
-                <div className="absolute top-3 left-3 bg-black/50 backdrop-blur-sm text-white/90 text-xs px-2.5 py-1 rounded-full font-medium pointer-events-none select-none">
+                <div className="hidden md:block absolute top-3 left-3 bg-black/50 backdrop-blur-sm text-white/90 text-xs px-2.5 py-1 rounded-full font-medium pointer-events-none select-none">
                   {index + 1} / {normalizedImages.length}
                 </div>
               )}
