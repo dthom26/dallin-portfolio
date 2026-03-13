@@ -44,6 +44,7 @@ export default function ProjectDetail() {
   const [featuresVisible, featuresRef] = useScrollRevealOnce({
     threshold: 0.2,
   });
+  const [techOpen, setTechOpen] = React.useState(false);
   const [ctaVisible, ctaRef] = useScrollRevealOnce({ threshold: 0.2 });
 
   if (!project) {
@@ -91,7 +92,8 @@ export default function ProjectDetail() {
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
             {project.name}
           </h1>
-          <p className="text-lg text-gray-400 mb-6">{project.technologies}</p>
+          {/* temporarily hidden: project technologies */}
+          {/* <p className="text-lg text-gray-400 mb-6">{project.technologies}</p> */}
         </div>
 
         {/* Project Image */}
@@ -152,10 +154,11 @@ export default function ProjectDetail() {
             <p className="text-gray-300 leading-relaxed text-base md:text-lg">
               {project.description}
             </p>
+            {/* Single client-facing paragraph is included in project.description for clarity */}
           </div>
         </div>
 
-        {/* Key Skills Section */}
+        {/* Key Skills Section (temporarily hidden)
         {project.skills && (
           <div
             ref={skillsRef}
@@ -182,6 +185,7 @@ export default function ProjectDetail() {
             </div>
           </div>
         )}
+        */}
 
         {/* Features Section */}
         {project.features && (
@@ -212,6 +216,46 @@ export default function ProjectDetail() {
             </div>
           </div>
         )}
+
+        {/* Tech & Stack Panel */}
+        <div className="mb-12">
+          <div className="bg-slate-900/50 border border-emerald-400/20 rounded-2xl p-4 md:p-6 shadow-lg">
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl font-bold mb-0 text-emerald-400">
+                Tech & Stack
+              </h2>
+              <button
+                onClick={() => setTechOpen((s) => !s)}
+                className="text-sm text-emerald-300 bg-emerald-600/10 hover:bg-emerald-600/20 px-3 py-1 rounded-md transition"
+                aria-expanded={techOpen}
+                aria-controls="tech-panel"
+              >
+                {techOpen ? "Hide" : "Show"}
+              </button>
+            </div>
+
+            {techOpen && (
+              <div id="tech-panel" className="mt-4">
+                {project.technologies && (
+                  <p className="text-gray-300 mb-4">{project.technologies}</p>
+                )}
+
+                {project.skills && (
+                  <div className="flex flex-wrap gap-2">
+                    {project.skills.map((skill, i) => (
+                      <span
+                        key={i}
+                        className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-400/20 text-emerald-300 px-3 py-1 rounded-full text-xs font-medium"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
 
         {/* Call to Action Section */}
         <div
