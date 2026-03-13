@@ -161,7 +161,9 @@ export default function ImageViewer({
                   </button>
                   <button
                     onClick={() =>
-                      setIndex((i) => Math.min(i + 1, normalizedImages.length - 1))
+                      setIndex((i) =>
+                        Math.min(i + 1, normalizedImages.length - 1)
+                      )
                     }
                     className="hidden md:flex absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 text-white w-9 h-9 items-center justify-center rounded-full shadow-md hover:bg-black/60 transition-colors text-2xl leading-none"
                     aria-label="Next"
@@ -193,7 +195,9 @@ export default function ImageViewer({
               const cap = normalizedImages[index]?.caption;
               return cap && cap.length > captionThreshold ? (
                 <div className="bg-slate-800/90 rounded-b-2xl border-t border-emerald-400/10 px-4 py-3">
-                  <p className="text-sm text-slate-200 leading-relaxed text-center">{cap}</p>
+                  <p className="text-sm text-slate-200 leading-relaxed text-center">
+                    {cap}
+                  </p>
                 </div>
               ) : null;
             })()}
