@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import projects from "./projectData";
 import useScrollReveal, { scrollRevealClass } from "../hooks/useScrollReveal";
+import ImageViewer from "./ImageViewer";
 import useScrollRevealOnce from "../hooks/useScrollRevealOnce";
 
 export default function ProjectDetail() {
@@ -18,6 +19,24 @@ export default function ProjectDetail() {
   // Scroll reveal hooks
   const [headerVisible, headerRef] = useScrollReveal({ threshold: 0.1 });
   const [imageVisible, imageRef] = useScrollRevealOnce({ threshold: 0.2 });
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [viewerPaused, setViewerPaused] = React.useState(false);
+
+  // Pause/resume viewer when an image popup opens/closes elsewhere
+  React.useEffect(() => {
+    function onOpened() {
+      setViewerPaused(true);
+    }
+    function onClosed() {
+      setViewerPaused(false);
+    }
+    window.addEventListener("imagePopupOpened", onOpened);
+    window.addEventListener("imagePopupClosed", onClosed);
+    return () => {
+      window.removeEventListener("imagePopupOpened", onOpened);
+      window.removeEventListener("imagePopupClosed", onClosed);
+    };
+  }, []);
   const [descriptionVisible, descriptionRef] = useScrollRevealOnce({
     threshold: 0.2,
   });
@@ -85,12 +104,35 @@ export default function ProjectDetail() {
           }`}
         >
           <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-emerald-900/30 border border-emerald-400/20">
-            <img
-              src={project.image}
-              alt={project.name}
-              className="w-full h-64 sm:h-80 md:h-96 object-cover"
+            <ImageViewer
+              images={[project.image]}
+              autoPlay={false}
+              interval={4000}
+              autoPause={true}
+              ariaLabel={`Image for ${project.name}`}
+              slideClass="w-full h-64 sm:h-80 md:h-96 object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
+            <div className="absolute bottom-4 right-4">
+              <button
+                onClick={() => {
+                  // pause background viewer immediately
+                  setViewerPaused(true);
+                  window.dispatchEvent(
+                    new CustomEvent("openImagePopup", {
+                      detail: {
+                        images: project.images || [project.image],
+                        ariaLabel: `Gallery for ${project.name}`,
+                        initialIndex: currentIndex,
+                      },
+                    })
+                  );
+                }}
+                className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg font-semibold shadow-lg flex items-center gap-2"
+              >
+                View Gallery
+              </button>
+            </div>
           </div>
         </div>
 
@@ -175,9 +217,7 @@ export default function ProjectDetail() {
         <div
           ref={ctaRef}
           className={`transition-all duration-1000 ${
-            ctaVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-8"
+            ctaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           <div className="bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-cyan-500/10 border border-emerald-400/30 rounded-2xl p-8 md:p-10 text-center shadow-xl">

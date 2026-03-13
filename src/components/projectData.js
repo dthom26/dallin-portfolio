@@ -6,13 +6,28 @@ import dragonSlayerImage from "../assets/images/dragon-slayer.png";
 import brainwaveImage from "../assets/images/brainwaveImage.png";
 import ScreenShot from "../assets/images/Screenshot.png";
 import cardCoverPic from "../assets/images/card cover pic.png";
-
+import studentCalendarScheduleView from "../assets/images/student-calender-schedule-new.png";
+import assignmentGridNew from "../assets/images/assignment-grid-new-1.png";
+import assignmentGridNewTwo from "../assets/images/assignment-grid-new-2.png";
+import assignmentGridNewThree from "../assets/images/assignment-grid-new-3.png";
+import studentLogin from "../assets/images/student-access-1.png";
+import studentForm from "../assets/images/student-access-2.png";
+import studentFromFilledIn from "../assets/images/student-access-4.png";
 const projects = [
   {
     id: 7,
     name: "Student Scheduler - Full Stack Application",
     technologies: "React, TypeScript, Node.js, Express.js, MongoDB, JWT",
-    image: cardCoverPic,
+    image: studentCalendarScheduleView,
+    images: [
+      { src: studentCalendarScheduleView, caption: "Calendar schedule view" },
+      { src: assignmentGridNew, caption: "Assignment grid (week view)" },
+      { src: assignmentGridNewTwo, caption: "Assignment grid (day view)" },
+      { src: assignmentGridNewThree, caption: "Manager dashboard" },
+      { src: studentLogin, caption: "Student login page" },
+      { src: studentForm, caption: "Student availability form" },
+      { src: studentFromFilledIn, caption: "Filled-in availability form" },
+    ],
     github: "https://github.com/dthom26/student-scheduler",
     description:
       "A comprehensive full-stack scheduling application that enables students to submit weekly availability and allows managers to view and coordinate schedules across multiple students efficiently.",
@@ -49,6 +64,7 @@ const projects = [
     name: "Fitness Tracker Application (In Development)",
     technologies: "React, Firebase, Firestore, Vite, JavaScript",
     image: ScreenShot, // You'll want to update this image reference
+    images: [{ src: ScreenShot, caption: "Main dashboard screenshot" }],
     github: "https://dthom26.github.io/my-workout-tracker/",
     description:
       "A comprehensive workout tracking application that enables users to create custom fitness programs, track workout sessions, and monitor progress over time. Features a multi-step program builder, real-time session tracking with exercise completion status, and week-by-week workout organization with historical data comparison.",
@@ -81,6 +97,10 @@ const projects = [
     name: "Dashboard For Health Sciences Library at University of Houston",
     technologies: "HTML, CSS, JavaScript, React.JS, Chart.js",
     image: dashboard,
+    images: [
+      { src: dashboard, caption: "Library dashboard" },
+      { src: cardCoverPic, caption: "Card cover example" },
+    ],
     github: "https://dthom26.github.io/hsl-custom-dashboard-/",
     description:
       "A custom dashboard for the Health Sciences Library, featuring interactive charts and data visualization for library analytics.",
@@ -103,6 +123,7 @@ const projects = [
     name: "Website for Kwartler Research Lab",
     technologies: "HTML, CSS, JavaScript, React.JS, Github",
     image: kwartler,
+    images: [kwartler],
     github: "https://thekwartlerlab.com/",
     description:
       "A modern research lab website built with React, showcasing publications, team members, and research projects.",
@@ -135,6 +156,7 @@ const projects = [
     name: "Landing Page Template",
     technologies: "HTML, CSS, JavaScript. Tailwind, React.js",
     image: brainwaveImage,
+    images: [brainwaveImage],
     github: "https://dthom26.github.io/landing-page-example/",
     description:
       "A modern, responsive landing page template for startups and SaaS products.",

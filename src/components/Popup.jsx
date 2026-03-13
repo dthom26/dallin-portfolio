@@ -1,20 +1,78 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import ImageViewer from "./ImageViewer";
 
 const Popup = ({ isOpen, onClose, project }) => {
+  const modalRef = useRef(null);
+  const [entered, setEntered] = useState(false);
+  const previouslyFocused = useRef(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    previouslyFocused.current = document.activeElement;
+    // Disable background scroll
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    function onKey(e) {
+      if (e.key === "Escape") onClose();
+      // simple tab trap
+      if (e.key === "Tab" && modalRef.current) {
+        const focusable = modalRef.current.querySelectorAll(
+          'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      }
+    }
+
+    window.addEventListener("keydown", onKey);
+    // focus modal
+    setTimeout(() => {
+      const focusable = modalRef.current?.querySelectorAll(
+        'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+      );
+      (focusable?.[0] || modalRef.current)?.focus();
+      // trigger fade-in animation
+      setTimeout(() => setEntered(true), 10);
+    }, 0);
+
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+      // restore focus
+      try {
+        previouslyFocused.current?.focus();
+      } catch (e) {}
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen || !project) return null;
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50"
+      className={`fixed inset-0 flex items-center justify-center z-50 transition-opacity duration-300 ${entered ? "bg-black/40 backdrop-blur-sm opacity-100" : "bg-black/0 opacity-0"}`}
       onClick={onClose}
       role="presentation"
     >
       <div
-        className="bg-white rounded-2xl p-4 sm:p-8 max-w-xs sm:max-w-md md:max-w-2xl w-full mx-2 sm:mx-4 relative shadow-lg overflow-y-auto max-h-[90vh]"
+        ref={modalRef}
+        tabIndex={-1}
+        role="dialog"
+        aria-modal="true"
+        aria-label={project.name}
+        className={`bg-white rounded-2xl p-4 sm:p-8 max-w-xs sm:max-w-md md:max-w-2xl w-full mx-2 sm:mx-4 relative shadow-lg overflow-y-auto max-h-[90vh] transition-all duration-300 ${entered ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
         onClick={(e) => e.stopPropagation()}
-        style={{
-          boxSizing: "border-box",
-        }}
+        style={{ boxSizing: "border-box" }}
       >
         {/* Close Button */}
         <button
@@ -41,11 +99,16 @@ const Popup = ({ isOpen, onClose, project }) => {
         <h2 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900">
           {project.name}
         </h2>
-        <img
-          src={project.image}
-          alt={project.name}
-          className="rounded-lg mb-4 w-full h-32 sm:h-40 object-cover"
-        />
+
+        <div className="rounded-lg mb-4 w-full">
+          <ImageViewer
+            images={project.images || [project.image]}
+            autoPlay={false}
+            thumbnails={true}
+            ariaLabel={`Gallery for ${project.name}`}
+          />
+        </div>
+
         <p className="text-gray-600 mb-6 text-sm sm:text-base">
           {project.description}
         </p>
@@ -83,7 +146,8 @@ const Popup = ({ isOpen, onClose, project }) => {
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 
