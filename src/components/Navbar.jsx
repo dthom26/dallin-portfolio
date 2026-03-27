@@ -43,10 +43,39 @@ export const Navbar = () => {
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
           >
-            <circle cx="36" cy="36" r="28" fill="none" stroke="currentColor" strokeWidth="1.5" />
-            <rect x="22" y="21" width="28" height="5.5" rx="1" fill="currentColor" />
-            <rect x="32.5" y="26.5" width="7" height="22" rx="1" fill="currentColor" />
-            <rect x="22" y="47" width="28" height="2" rx="1" fill="currentColor" opacity="0.35" />
+            <circle
+              cx="36"
+              cy="36"
+              r="28"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+            <rect
+              x="22"
+              y="21"
+              width="28"
+              height="5.5"
+              rx="1"
+              fill="currentColor"
+            />
+            <rect
+              x="32.5"
+              y="26.5"
+              width="7"
+              height="22"
+              rx="1"
+              fill="currentColor"
+            />
+            <rect
+              x="22"
+              y="47"
+              width="28"
+              height="2"
+              rx="1"
+              fill="currentColor"
+              opacity="0.35"
+            />
           </svg>
         </button>
         {/* Desktop Menu */}
