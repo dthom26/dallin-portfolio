@@ -37,12 +37,12 @@ export const Hero = () => {
         {/* Main Hero Content */}
         <div className="space-y-6">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold font-sora leading-tight">
-            <span className="block mb-2">Hi, I&apos;m</span>
+            <span className="block mb-2">Hi, Welcome to</span>
             <span
-              className="block bg-gradient-to-r from-emerald-400 to-teal-500 
-                           bg-clip-text text-transparent mb-4"
+              className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4"
+              style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700 }}
             >
-              Dallin Thomson
+              Thomson Technologies
             </span>
           </h1>
 
@@ -54,14 +54,15 @@ export const Hero = () => {
                 speed={100}
                 deleteSpeed={50}
                 delayBetweenTexts={2000}
-                className="text-blue-400 font-semibold"
+                className="text-primary font-semibold"
               />
             </div>
           </div>
 
           <p className="mt-8 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            I create modern, responsive full-stack web applications that deliver seamless,
-            user-friendly experiences with a focus on innovation and usability.
+            I create modern, responsive full-stack web applications that deliver
+            seamless, user-friendly experiences with a focus on innovation and
+            usability.
           </p>
 
           {/* CTA Buttons */}
@@ -70,7 +71,7 @@ export const Hero = () => {
             <a
               href="#contact"
               className="px-8 py-3 border-2 border-white/20 text-white rounded-full 
-                       hover:border-blue-400 hover:text-blue-400 transition-all duration-300
+                       hover:border-primary hover:text-primary transition-all duration-300
                        backdrop-blur-sm"
             >
               Get In Touch

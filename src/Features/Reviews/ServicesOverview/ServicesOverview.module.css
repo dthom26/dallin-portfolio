@@ -22,7 +22,7 @@
     font-size: 2.25rem;
     font-weight: 700;
     text-align: center;
-    color: #ffffff;
+    color: var(--color-text);
     margin-bottom: 3rem;
     font-family: var(--font-sora, Sora, sans-serif);
     animation: fadeInDown 0.8s ease-out;
@@ -38,25 +38,26 @@
 
 /* Center last 2 cards on desktop (3-column layout) */
 @media (min-width: 1025px) {
+
     /* Create a 6-column grid for better centering control */
     .servicesGrid {
         grid-template-columns: repeat(6, 1fr);
     }
-    
+
     /* First 3 cards span 2 columns each */
-    .servicesGrid > :nth-child(1),
-    .servicesGrid > :nth-child(2),
-    .servicesGrid > :nth-child(3) {
+    .servicesGrid> :nth-child(1),
+    .servicesGrid> :nth-child(2),
+    .servicesGrid> :nth-child(3) {
         grid-column: span 2;
     }
-    
+
     /* Card 4: start at column 2, span 2 */
-    .servicesGrid > :nth-child(4) {
+    .servicesGrid> :nth-child(4) {
         grid-column: 2 / span 2;
     }
 
     /* Card 5: start at column 4, span 2 */
-    .servicesGrid > :nth-child(5) {
+    .servicesGrid> :nth-child(5) {
         grid-column: 4 / span 2;
     }
 }
@@ -69,16 +70,16 @@
     }
 
     /* Reset desktop grid spans */
-    .servicesGrid > :nth-child(1),
-    .servicesGrid > :nth-child(2),
-    .servicesGrid > :nth-child(3),
-    .servicesGrid > :nth-child(4) {
+    .servicesGrid> :nth-child(1),
+    .servicesGrid> :nth-child(2),
+    .servicesGrid> :nth-child(3),
+    .servicesGrid> :nth-child(4) {
         grid-column: auto;
         margin-left: 0;
     }
 
     /* Center the last card on tablet (2-column layout) */
-    .servicesGrid > :nth-child(5) {
+    .servicesGrid> :nth-child(5) {
         grid-column: 1 / -1;
         justify-self: center;
         max-width: calc(50% - 0.75rem);
@@ -94,16 +95,16 @@
     }
 
     /* Reset desktop grid spans */
-    .servicesGrid > :nth-child(1),
-    .servicesGrid > :nth-child(2),
-    .servicesGrid > :nth-child(3),
-    .servicesGrid > :nth-child(4) {
+    .servicesGrid> :nth-child(1),
+    .servicesGrid> :nth-child(2),
+    .servicesGrid> :nth-child(3),
+    .servicesGrid> :nth-child(4) {
         grid-column: auto;
         margin-left: 0;
     }
 
     /* Center the last card on smaller tablets too */
-    .servicesGrid > :nth-child(5) {
+    .servicesGrid> :nth-child(5) {
         grid-column: 1 / -1;
         justify-self: center;
         max-width: calc(50% - 0.625rem);
@@ -128,11 +129,11 @@
     }
 
     /* Reset all custom positioning on mobile */
-    .servicesGrid > :nth-child(1),
-    .servicesGrid > :nth-child(2),
-    .servicesGrid > :nth-child(3),
-    .servicesGrid > :nth-child(4),
-    .servicesGrid > :nth-child(5) {
+    .servicesGrid> :nth-child(1),
+    .servicesGrid> :nth-child(2),
+    .servicesGrid> :nth-child(3),
+    .servicesGrid> :nth-child(4),
+    .servicesGrid> :nth-child(5) {
         grid-column: 1 / -1;
         justify-self: stretch;
         max-width: none;
@@ -169,12 +170,12 @@
     font-size: 1.1rem;
     font-weight: 700;
     font-family: var(--font-sora, Sora, sans-serif);
-    color: #ffffff;
-    background: linear-gradient(135deg, #34d399, #14b8a6);
+    color: var(--color-text);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
     border: 2px solid transparent;
     border-radius: 50px;
     text-decoration: none;
-    box-shadow: 0 4px 20px rgba(52, 211, 153, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -187,14 +188,14 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
     transition: left 0.5s;
 }
 
 .ctaButton:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(52, 211, 153, 0.5);
-    background: linear-gradient(135deg, #14b8a6, #0d9488);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.45);
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-accent));
 }
 
 .ctaButton:hover::before {
@@ -234,6 +235,7 @@
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -245,6 +247,7 @@
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);

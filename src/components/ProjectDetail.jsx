@@ -56,7 +56,7 @@ export default function ProjectDetail() {
         </p>
         <Link
           to="/"
-          className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors"
+          className="flex items-center gap-2 text-primary hover:text-accent transition-colors"
         >
           <ArrowLeft className="w-5 h-5" />
           Back to Home
@@ -68,11 +68,11 @@ export default function ProjectDetail() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-slate-950 to-slate-900 text-white">
       {/* Navigation Bar */}
-      <nav className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-emerald-400/20">
+      <nav className="sticky top-0 z-50 bg-card/80 backdrop-blur-md border-b border-primary/20">
         <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 py-4">
           <button
             onClick={() => navigate("/")}
-            className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors group"
+            className="flex items-center gap-2 text-primary hover:text-accent transition-colors group"
           >
             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
             <span className="font-medium">Back to Portfolio</span>
@@ -89,7 +89,7 @@ export default function ProjectDetail() {
             headerVisible ? "opacity-100 translate-y-0" : ""
           }`}
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-primary-dark to-accent bg-clip-text text-transparent">
             {project.name}
           </h1>
           {/* temporarily hidden: project technologies */}
@@ -105,7 +105,7 @@ export default function ProjectDetail() {
               : "opacity-0 scale-95 translate-y-8"
           }`}
         >
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-emerald-900/30 border border-emerald-400/20">
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/30 border border-primary/20">
             <ImageViewer
               images={[project.image]}
               autoPlay={false}
@@ -130,7 +130,7 @@ export default function ProjectDetail() {
                     })
                   );
                 }}
-                className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg font-semibold shadow-lg flex items-center gap-2"
+                className="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-semibold shadow-lg flex items-center gap-2"
               >
                 View Gallery
               </button>
@@ -147,8 +147,8 @@ export default function ProjectDetail() {
               : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="bg-slate-900/50 border border-emerald-400/20 rounded-2xl p-6 md:p-8 shadow-lg">
-            <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+          <div className="bg-card/50 border border-primary/20 rounded-2xl p-6 md:p-8 shadow-lg">
+            <h2 className="text-2xl font-bold mb-4 text-primary">
               About This Project
             </h2>
             <p className="text-gray-300 leading-relaxed text-base md:text-lg">
@@ -197,14 +197,12 @@ export default function ProjectDetail() {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            <div className="bg-slate-900/50 border border-emerald-400/20 rounded-2xl p-6 md:p-8 shadow-lg">
-              <h2 className="text-2xl font-bold mb-6 text-emerald-400">
-                Features
-              </h2>
+            <div className="bg-card/50 border border-primary/20 rounded-2xl p-6 md:p-8 shadow-lg">
+              <h2 className="text-2xl font-bold mb-6 text-primary">Features</h2>
               <ul className="space-y-3">
                 {project.features.map((feature, index) => (
                   <li key={index} className="flex items-start gap-3 group">
-                    <span className="text-emerald-400 mt-1 group-hover:scale-110 transition-transform">
+                    <span className="text-primary mt-1 group-hover:scale-110 transition-transform">
                       ✓
                     </span>
                     <span className="text-gray-300 leading-relaxed">
@@ -219,14 +217,14 @@ export default function ProjectDetail() {
 
         {/* Tech & Stack Panel */}
         <div className="mb-12">
-          <div className="bg-slate-900/50 border border-emerald-400/20 rounded-2xl p-4 md:p-6 shadow-lg">
+          <div className="bg-card/50 border border-primary/20 rounded-2xl p-4 md:p-6 shadow-lg">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold mb-0 text-emerald-400">
+              <h2 className="text-2xl font-bold mb-0 text-primary">
                 Tech & Stack
               </h2>
               <button
                 onClick={() => setTechOpen((s) => !s)}
-                className="text-sm text-emerald-300 bg-emerald-600/10 hover:bg-emerald-600/20 px-3 py-1 rounded-md transition"
+                className="text-sm text-accent bg-primary/10 hover:bg-primary/20 px-3 py-1 rounded-md transition"
                 aria-expanded={techOpen}
                 aria-controls="tech-panel"
               >
@@ -245,7 +243,7 @@ export default function ProjectDetail() {
                     {project.skills.map((skill, i) => (
                       <span
                         key={i}
-                        className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-400/20 text-emerald-300 px-3 py-1 rounded-full text-xs font-medium"
+                        className="bg-gradient-to-r from-primary/10 to-primary-dark/10 border border-primary/20 text-accent px-3 py-1 rounded-full text-xs font-medium"
                       >
                         {skill}
                       </span>
@@ -264,7 +262,7 @@ export default function ProjectDetail() {
             ctaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-cyan-500/10 border border-emerald-400/30 rounded-2xl p-8 md:p-10 text-center shadow-xl">
+          <div className="bg-gradient-to-r from-primary/10 via-primary-dark/10 to-accent/10 border border-primary/30 rounded-2xl p-8 md:p-10 text-center shadow-xl">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
               Interested in this project?
             </h2>
@@ -278,7 +276,7 @@ export default function ProjectDetail() {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-emerald-600 hover:to-teal-600 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  className="flex items-center gap-2 bg-gradient-to-r from-primary to-primary-dark text-white px-6 py-3 rounded-lg font-semibold hover:from-primary-dark hover:to-accent transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
                 >
                   <ExternalLink className="w-5 h-5" />
                   View Live Project
@@ -296,7 +294,7 @@ export default function ProjectDetail() {
                     }
                   }, 100);
                 }}
-                className="flex items-center gap-2 bg-slate-800 border border-emerald-400/30 text-emerald-400 px-6 py-3 rounded-lg font-semibold hover:bg-slate-700 transition-all transform hover:scale-105 shadow-lg"
+                className="flex items-center gap-2 bg-slate-800 border border-primary/30 text-primary px-6 py-3 rounded-lg font-semibold hover:bg-slate-700 transition-all transform hover:scale-105 shadow-lg"
               >
                 Contact Me
               </a>
@@ -316,7 +314,7 @@ export default function ProjectDetail() {
                 }
               }, 100);
             }}
-            className="text-emerald-400 hover:text-emerald-300 transition-colors font-medium inline-flex items-center gap-2 group"
+            className="text-primary hover:text-accent transition-colors font-medium inline-flex items-center gap-2 group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             View All Projects

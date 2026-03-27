@@ -22,7 +22,7 @@ function HomePage() {
       <Hero />
       <About />
       <ServicesOverview />
-      <Experience />
+      {/* <Experience /> */}
       <Projects />
       <Reviews />
       <Contact />

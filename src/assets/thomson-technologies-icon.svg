@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" width="72" height="72">
+  <!-- Ring -->
+  <circle cx="36" cy="36" r="28" fill="none" stroke="#0ea5e9" stroke-width="1.5"/>
+  <!-- T crossbar -->
+  <rect x="22" y="21" width="28" height="5.5" rx="1" fill="#0ea5e9"/>
+  <!-- T stem -->
+  <rect x="32.5" y="26.5" width="7" height="22" rx="1" fill="#0ea5e9"/>
+  <!-- Footer underbar -->
+  <rect x="22" y="47" width="28" height="2" rx="1" fill="#0ea5e9" opacity="0.35"/>
+</svg>

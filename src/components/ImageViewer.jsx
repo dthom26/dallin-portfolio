@@ -201,7 +201,7 @@ export default function ImageViewer({
                       key={i}
                       onClick={() => setIndex(i)}
                       className={`w-2 h-2 rounded-full transition-colors ${
-                        i === index ? "bg-emerald-400" : "bg-white/40"
+                        i === index ? "bg-primary" : "bg-white/40"
                       }`}
                       aria-label={`Go to slide ${i + 1}`}
                     />
@@ -214,7 +214,7 @@ export default function ImageViewer({
             {(() => {
               const cap = normalizedImages[index]?.caption;
               return cap && cap.length > captionThreshold ? (
-                <div className="bg-slate-800/90 rounded-b-2xl border-t border-emerald-400/10 px-4 py-3">
+                <div className="bg-slate-800/90 rounded-b-2xl border-t border-primary/10 px-4 py-3">
                   <p className="text-sm text-slate-200 leading-relaxed text-center">
                     {cap}
                   </p>

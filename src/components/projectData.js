@@ -1,45 +1,107 @@
-import dashboard from "../assets/images/cms-hsl-pic.png";
-import kwartler from "../assets/images/Screenshot_kwartler_lab.png";
-import caffined from "../assets/images/caffiend-pic.png";
-import chefAi from "../assets/images/chefAi.png";
-import dragonSlayerImage from "../assets/images/dragon-slayer.png";
-import brainwaveImage from "../assets/images/brainwaveImage.png";
-import ScreenShot from "../assets/images/Screenshot.png";
-import cardCoverPic from "../assets/images/card cover pic.png";
-import studentCalendarScheduleView from "../assets/images/student-calender-schedule-new.png";
-import assignmentGridNew from "../assets/images/assignment-grid-new-1.png";
-import assignmentGridNewTwo from "../assets/images/assignment-grid-new-2.png";
-import assignmentGridNewThree from "../assets/images/assignment-grid-new-3.png";
-import studentLogin from "../assets/images/student-access-1.png";
-import studentForm from "../assets/images/student-access-2.png";
-import studentFromFilledIn from "../assets/images/student-access-4.png";
+import img from "../assets/imageManifest.js";
+
 const projects = [
   {
     id: 7,
-    name: "Student Scheduler - Full Stack Application",
+    name: "SemesterShiftBuilder ",
     technologies: "React, TypeScript, Node.js, Express.js, MongoDB, JWT",
-    image: studentCalendarScheduleView,
+    image:
+      img[
+        "student-scheduler/schedule-builder-manager-student-schedules-view-1.png"
+      ],
     images: [
-      { src: studentCalendarScheduleView, caption: "Calendar schedule view" },
-      { src: assignmentGridNew, caption: "Assignment grid (week view)" },
-      { src: assignmentGridNewTwo, caption: "Assignment grid (day view)" },
-      { src: assignmentGridNewThree, caption: "Manager dashboard" },
-      { src: studentLogin, caption: "Student login page" },
-      { src: studentForm, caption: "Student availability form" },
-      { src: studentFromFilledIn, caption: "Filled-in availability form" },
+      {
+        src: img[
+          "student-scheduler/schedule-builder-manager-student-schedules-view-1.png"
+        ],
+        caption: "Manager schedule view",
+      },
+      {
+        src: img[
+          "student-scheduler/schedule-builder-manager-student-schedules-view-2.png"
+        ],
+        caption: "Manager schedule view (2)",
+      },
+      {
+        src: img[
+          "student-scheduler/schedule-builder-manager-student-schedules-view-3.png"
+        ],
+        caption: "Manager schedule view (3)",
+      },
+      {
+        src: img[
+          "student-scheduler/schedule-builder-manager-student-schedules-view-4.png"
+        ],
+        caption: "Manager schedule view (4)",
+      },
+      {
+        src: img[
+          "student-scheduler/schedule-builder-manager-student-schedules-view-5.png"
+        ],
+        caption: "Manager schedule view (5)",
+      },
+      {
+        src: img[
+          "student-scheduler/schedule-builder-manager-student-schedules-view-6.png"
+        ],
+        caption: "Manager schedule view (6)",
+      },
+      {
+        src: img[
+          "student-scheduler/schedule-builder-manager-student-schedules-view-7.png"
+        ],
+        caption: "Manager schedule view (7)",
+      },
+      {
+        src: img["student-scheduler/builder-1.png"],
+        caption: "Schedule builder (1)",
+      },
+      {
+        src: img["student-scheduler/builder-2.png"],
+        caption: "Schedule builder (2)",
+      },
+      {
+        src: img["student-scheduler/builder-3.png"],
+        caption: "Schedule builder (3)",
+      },
+      {
+        src: img["student-scheduler/builder-4.png"],
+        caption: "Schedule builder (4)",
+      },
+      {
+        src: img["student-scheduler/student-view-1.png"],
+        caption: "Student availability form (1)",
+      },
+      {
+        src: img["student-scheduler/student-view-2.png"],
+        caption: "Student availability form (2)",
+      },
+      {
+        src: img["student-scheduler/student-view-3.png"],
+        caption: "Student availability form (3)",
+      },
+      {
+        src: img["student-scheduler/student-view-4.png"],
+        caption: "Student availability form (4)",
+      },
+      {
+        src: img["student-scheduler/student-view-5.png"],
+        caption: "Student availability form (5)",
+      },
     ],
-    github: "https://github.com/dthom26/student-scheduler",
-    description:
-      "A lightweight, web based scheduling application built for the Health Sciences Library at the University of Houston. It streamlines collecting student availability with an interactive weekly grid and gives managers a single, visual interface to filter by location, review submissions, and assemble weekly schedules quickly — reducing coordination time and missed shifts. Optimized for performance on phones and desktops, it improves manager efficiency while making student submissions fast and simple.",
+    github: "",
+    description: `A web-based scheduling tool designed for university managers and coordinators. Gathering student availability for a semester schedule is often a time-consuming process—chasing down responses, manually cross-referencing spreadsheets, and piecing together a schedule that works for everyone. This application replaces that workflow entirely.
+
+  Students submit their availability once through an interactive weekly grid, and managers get a single dashboard to review every submission, apply scheduling rules, and build out the semester schedule—no Excel sheets, no back-and-forth emails. The focus is on getting the schedule right the first time, resulting in a faster, less stressful process for coordinators and a simpler, clearer experience for students.`,
     features: [
-      "Interactive availability grid with touch-friendly drag/tap input",
-      "Simple student onboarding (name, ID, location) for fast submissions",
-      "Manager dashboard with authentication and location filters",
-      "Visual assignment tools: range adjustment and calendar views",
-      "Confirm modals and toast notifications for safe reversible actions",
-      "Performance-focused UX: lazy loading, caching, optimistic updates",
-      "Single-day and week modes with color-coded availability statuses",
-      "Student filtering, search, and bulk manager actions",
+      "Drag-and-drop availability grid — students submit weekly schedules in minutes, on any device",
+      "Smart manager dashboard — view, filter, and compare all submissions across multiple locations from one screen",
+      "AI-assisted scheduling — generate optimized shift assignments instantly based on student preferences and configurable rules",
+      "Multi-location support — manage separate schedules, rules, and drafts per facility without overlap",
+      "Draft management — save and revisit up to 10 schedule versions per location, with timestamps",
+      "Fully configurable — managers control active days, operational hours, availability types, and scheduling constraints",
+      "Built for real use — confirmation flows, error recovery, and live feedback keep both students and managers unblocked",
+      "Effortless schedule builder — managers can assign shifts, adjust coverage, and experiment with scenarios in just a few clicks",
     ],
     skills: [
       "React 19",
@@ -62,8 +124,13 @@ const projects = [
     id: 2,
     name: "Fitness Tracker Application (In Development)",
     technologies: "React, Firebase, Firestore, Vite, JavaScript",
-    image: ScreenShot, // You'll want to update this image reference
-    images: [{ src: ScreenShot, caption: "Main dashboard screenshot" }],
+    image: img["fitness-tracker/screenshot.png"],
+    images: [
+      {
+        src: img["fitness-tracker/screenshot.png"],
+        caption: "Main dashboard screenshot",
+      },
+    ],
     github: "https://dthom26.github.io/my-workout-tracker/",
     description:
       "A comprehensive workout tracking application that enables users to create custom fitness programs, track workout sessions, and monitor progress over time. Features a multi-step program builder, real-time session tracking with exercise completion status, and week-by-week workout organization with historical data comparison.",
@@ -95,10 +162,16 @@ const projects = [
     id: 1,
     name: "Dashboard For Health Sciences Library at University of Houston",
     technologies: "HTML, CSS, JavaScript, React.JS, Chart.js",
-    image: dashboard,
+    image: img["hsl-dashboard/cms-hsl-pic.png"],
     images: [
-      { src: dashboard, caption: "Library dashboard" },
-      { src: cardCoverPic, caption: "Card cover example" },
+      {
+        src: img["hsl-dashboard/cms-hsl-pic.png"],
+        caption: "Library dashboard",
+      },
+      {
+        src: img["hsl-dashboard/card-cover.png"],
+        caption: "Card cover example",
+      },
     ],
     github: "https://dthom26.github.io/hsl-custom-dashboard-/",
     description:
@@ -121,8 +194,13 @@ const projects = [
     id: 6,
     name: "Website for Kwartler Research Lab",
     technologies: "HTML, CSS, JavaScript, React.JS, Github",
-    image: kwartler,
-    images: [kwartler],
+    image: img["kwartler-lab/screenshot.png"],
+    images: [
+      {
+        src: img["kwartler-lab/screenshot.png"],
+        caption: "Kwartler Research Lab website",
+      },
+    ],
     github: "https://thekwartlerlab.com/",
     description:
       "A modern research lab website built with React, showcasing publications, team members, and research projects.",
@@ -150,16 +228,16 @@ const projects = [
   //   ],
   //   skills: ["React", "Firebase", "Authentication", "State Management"],
   // },
-  {
-    id: 5,
-    name: "Landing Page Template",
-    technologies: "HTML, CSS, JavaScript. Tailwind, React.js",
-    image: brainwaveImage,
-    images: [brainwaveImage],
-    github: "https://dthom26.github.io/landing-page-example/",
-    description:
-      "A modern, responsive landing page template for startups and SaaS products.",
-  },
+  // {
+  //   id: 5,
+  //   name: "Landing Page Template",
+  //   technologies: "HTML, CSS, JavaScript. Tailwind, React.js",
+  //   image: brainwaveImage,
+  //   images: [brainwaveImage],
+  //   github: "https://dthom26.github.io/landing-page-example/",
+  //   description:
+  //     "A modern, responsive landing page template for startups and SaaS products.",
+  // },
   // {
   //   id: 4,
   //   name: "Dragon Slayer (Text Based RPG)",

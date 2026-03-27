@@ -21,11 +21,11 @@ function ExperienceCard({ exp, idx, align }) {
             : "justify-end md:justify-start"
         }`}
       >
-        <div className="bg-slate-900/80 border border-emerald-400/20 rounded-xl p-4 md:p-6 shadow-lg shadow-emerald-900/30 max-w-xs sm:max-w-sm md:max-w-md w-full">
+        <div className="bg-card/80 border border-primary/20 rounded-xl p-4 md:p-6 shadow-lg shadow-primary/30 max-w-xs sm:max-w-sm md:max-w-md w-full">
           <h3 className="text-lg md:text-xl font-bold text-white mb-2 leading-tight">
             {exp.title}
           </h3>
-          <div className="text-sm md:text-md text-blue-400 font-semibold mb-1">
+          <div className="text-sm md:text-md text-primary font-semibold mb-1">
             {exp.company}
           </div>
           <div className="text-xs md:text-sm text-gray-400 mb-3">
@@ -50,7 +50,7 @@ function ExperienceCard({ exp, idx, align }) {
         </div>
       </div>
       {/* Timeline dot */}
-      <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-500 rounded-full border-4 border-slate-900 z-20" />
+      <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-br from-primary via-primary-dark to-accent rounded-full border-4 border-[var(--color-bg)] z-20" />
     </div>
   );
 }
@@ -72,7 +72,7 @@ const Experience = () => {
         <div className="relative flex flex-col items-center">
           {/* Vertical timeline line with animation */}
           <div
-            className={`absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-emerald-400 via-teal-500 to-cyan-500 z-0 ${
+            className={`absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-primary via-primary-dark to-accent z-0 ${
               isVisible ? "animate-timeline" : ""
             }`}
             style={{ height: isVisible ? "100%" : "0" }}

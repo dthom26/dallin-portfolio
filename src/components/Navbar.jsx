@@ -3,7 +3,7 @@ import { useState } from "react";
 const navLinks = [
   { href: "#aboutMe", label: "About" },
   { href: "#services", label: "Services" },
-  { href: "#experience", label: "Experience" },
+  // { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
 ];
@@ -25,12 +25,30 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-slate-900/70 shadow-lg transition-all">
+    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-card/70 shadow-lg transition-all">
       <div className="px-6 md:px-12 py-3 flex items-center justify-between">
-        {/* Logo/Name */}
-        <div className="text-2xl font-bold tracking-wide text-blue-400 select-none">
-          Dallin Thomson
-        </div>
+        {/* Logo (icon-only) */}
+        <button
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            setIsOpen(false);
+          }}
+          aria-label="Home"
+          className="flex items-center text-primary focus:outline-none"
+        >
+          <svg
+            className="w-8 h-8 md:w-10 md:h-10"
+            viewBox="0 0 72 72"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <circle cx="36" cy="36" r="28" fill="none" stroke="currentColor" strokeWidth="1.5" />
+            <rect x="22" y="21" width="28" height="5.5" rx="1" fill="currentColor" />
+            <rect x="32.5" y="26.5" width="7" height="22" rx="1" fill="currentColor" />
+            <rect x="22" y="47" width="28" height="2" rx="1" fill="currentColor" opacity="0.35" />
+          </svg>
+        </button>
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-8 md:gap-12 flex-1 justify-end">
           {navLinks.map((link) => (
@@ -40,8 +58,8 @@ export const Navbar = () => {
               className={`px-4 py-2 font-medium transition-colors duration-200 rounded-lg focus:outline-none
                 ${
                   active === link.href
-                    ? "bg-gradient-to-r from-emerald-400 to-teal-500 text-white"
-                    : "hover:text-emerald-400 text-gray-200"
+                    ? "bg-gradient-to-r from-primary to-primary-dark text-white"
+                    : "hover:text-primary text-gray-200"
                 }`}
             >
               {link.label}
@@ -94,8 +112,8 @@ export const Navbar = () => {
               className={`w-full text-left px-4 py-2 font-medium rounded-lg transition-colors duration-200 focus:outline-none
                 ${
                   active === link.href
-                    ? "bg-gradient-to-r from-blue-400 to-purple-500 text-white"
-                    : "hover:text-blue-400 text-gray-200"
+                    ? "bg-gradient-to-r from-primary to-primary-dark text-white"
+                    : "hover:text-primary text-gray-200"
                 }`}
             >
               {link.label}

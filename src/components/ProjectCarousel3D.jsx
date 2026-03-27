@@ -4,14 +4,9 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import useScrollReveal, { scrollRevealClass } from "../hooks/useScrollReveal";
 import useScrollRevealOnce from "../hooks/useScrollRevealOnce";
 
-function ProjectCard3D({
-  project,
-  position,
-  totalCards,
-  currentIndex,
-}) {
+function ProjectCard3D({ project, position, totalCards, currentIndex }) {
   const navigate = useNavigate();
-  
+
   // Calculate the angle for each card in the circle
   const anglePerCard = 360 / totalCards;
   const angle = (position - currentIndex) * anglePerCard;
@@ -53,7 +48,7 @@ function ProjectCard3D({
         marginTop: "-12rem", // approximate center for card height
       }}
     >
-      <div className="bg-slate-900/90 border border-emerald-400/20 rounded-xl p-4 shadow-lg shadow-emerald-900/30 hover:bg-slate-900/95 transition hover:shadow-xl transform hover:scale-105 relative backface-hidden">
+      <div className="bg-card/90 border border-primary/20 rounded-xl p-4 shadow-lg shadow-primary/30 hover:bg-card/95 transition hover:shadow-xl transform hover:scale-105 relative backface-hidden">
         <img
           src={project.image}
           alt={project.name}
@@ -64,7 +59,7 @@ function ProjectCard3D({
         <div className="flex justify-center">
           <button
             onClick={handleSeeProject}
-            className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-2 rounded hover:from-emerald-600 hover:to-teal-600 transition-all transform hover:scale-105 shadow-md text-sm font-semibold"
+            className="bg-gradient-to-r from-primary to-primary-dark text-white px-4 py-2 rounded hover:from-primary-dark hover:to-accent transition-all transform hover:scale-105 shadow-md text-sm font-semibold"
           >
             See Project
           </button>
@@ -140,7 +135,9 @@ export default function ProjectCarousel3D({ projects }) {
             titleVisible ? "opacity-100 translate-y-0" : ""
           }`}
         >
-          <h2 className="text-4xl font-bold text-center mb-16">Featured Work</h2>
+          <h2 className="text-4xl font-bold text-center mb-16">
+            Featured Client Work
+          </h2>
         </div>
 
         {/* Animated Carousel */}
@@ -158,7 +155,7 @@ export default function ProjectCarousel3D({ projects }) {
             {/* Navigation Buttons - Desktop */}
             <button
               onClick={handlePrev}
-              className="hidden md:block absolute left-8 top-1/2 -translate-y-1/2 z-50 bg-slate-900/90 hover:bg-slate-800 border border-emerald-400/30 text-emerald-200 hover:text-white p-3 rounded-full shadow-xl transition-all hover:scale-110"
+              className="hidden md:block absolute left-8 top-1/2 -translate-y-1/2 z-50 bg-slate-900/90 hover:bg-slate-800 border border-primary/30 text-accent hover:text-white p-3 rounded-full shadow-xl transition-all hover:scale-110"
               aria-label="Previous Project"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -195,7 +192,7 @@ export default function ProjectCarousel3D({ projects }) {
 
             <button
               onClick={handleNext}
-              className="hidden md:block absolute right-8 top-1/2 -translate-y-1/2 z-50 bg-slate-900/90 hover:bg-slate-800 border border-emerald-400/30 text-emerald-200 hover:text-white p-3 rounded-full shadow-xl transition-all hover:scale-110"
+              className="hidden md:block absolute right-8 top-1/2 -translate-y-1/2 z-50 bg-slate-900/90 hover:bg-slate-800 border border-primary/30 text-accent hover:text-white p-3 rounded-full shadow-xl transition-all hover:scale-110"
               aria-label="Next Project"
             >
               <ChevronRight className="w-6 h-6" />
@@ -244,7 +241,7 @@ export default function ProjectCarousel3D({ projects }) {
                   onClick={() => setCurrentIndex(idx)}
                   className={`w-3 h-3 rounded-full transition-all ${
                     idx === currentIndex
-                      ? "bg-emerald-400 scale-125"
+                      ? "bg-primary scale-125"
                       : "bg-gray-600 hover:bg-gray-500"
                   }`}
                   aria-label={`Go to project ${idx + 1}`}

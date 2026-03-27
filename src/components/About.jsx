@@ -22,7 +22,7 @@ function TechCard({ tech, idx }) {
         }`}
       style={{ transitionDelay: `${idx * 0.1}s` }}
     >
-      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-500 flex items-center justify-center shadow-lg mb-2 hover:scale-110 hover:shadow-2xl">
+      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary via-primary-dark to-accent flex items-center justify-center shadow-lg mb-2 hover:scale-110 hover:shadow-2xl">
         {Icon ? (
           <Icon className="w-10 h-10 text-white" />
         ) : (
@@ -57,10 +57,16 @@ export const About = () => {
           </div>
           <div className="flex-1">
             <p className="text-lg text-white mb-8">
-              I&apos;m a full-stack developer who builds web applications that actually solve business problems. With a background in psychology, I don&apos;t just code features—I design experiences that make sense to your users and drive real results.
+              I&apos;m a full-stack developer who builds web applications that
+              actually solve business problems. With a background in psychology,
+              I don&apos;t just code features—I design experiences that make
+              sense to your users and drive real results.
             </p>
             <p className="text-lg text-white mb-8">
-              Whether you need a custom web app, a Shopify e-commerce store, or a complete full-stack solution, I handle everything from the frontend to the backend. You get direct communication, clean code, and a partner who cares about your success.
+              Whether you need a custom web app, a Shopify e-commerce store, or
+              a complete full-stack solution, I handle everything from the
+              frontend to the backend. You get direct communication, clean code,
+              and a partner who cares about your success.
             </p>
           </div>
         </div>

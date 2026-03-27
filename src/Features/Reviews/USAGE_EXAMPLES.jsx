@@ -78,8 +78,8 @@ export function ReviewsFullyCustom() {
           <ReviewCarousel.Card key={review.id} review={review} index={index}>
             {(reviewData) => (
               <div style={{ 
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                color: 'white',
+                background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%)',
+                color: 'var(--color-text)',
                 padding: '2rem',
                 borderRadius: '20px'
               }}>
