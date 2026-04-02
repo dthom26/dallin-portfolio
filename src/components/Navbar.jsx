@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const navLinks = [
+  { href: "/", label: "Home" },
   { href: "#aboutMe", label: "About" },
   { href: "/services", label: "Services" },
   // { href: "#experience", label: "Experience" },
@@ -19,6 +20,18 @@ export const Navbar = () => {
 
   // Smooth scroll and active link highlight
   const handleNavClick = (href) => {
+    // Home special-case: scroll to top if already on home, otherwise navigate
+    if (href === "/") {
+      if (location.pathname === "/") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        navigate("/");
+      }
+      setActive(href);
+      setIsOpen(false);
+      return;
+    }
+
     // If internal route, use router navigation
     if (href && href.startsWith("/")) {
       navigate(href);
