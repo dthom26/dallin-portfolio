@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import useScrollReveal, { scrollRevealClass } from "../hooks/useScrollReveal";
 import useScrollRevealOnce from "../hooks/useScrollRevealOnce";
-import ProfilePic from "../assets/images/ProfilePic.png";
 import { FaReact, FaJs, FaNodeJs, FaHtml5, FaCss3Alt } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { SiExpress } from "react-icons/si";
@@ -38,6 +37,8 @@ function TechCard({ tech, idx }) {
 
 export const About = () => {
   const [isVisible, ref] = useScrollReveal({ threshold: 0.2 });
+  const publicSrc = "/images/ProfilePic.png";
+  const [hasProfilePic, setHasProfilePic] = useState(true);
   return (
     <div
       ref={ref}
@@ -48,25 +49,40 @@ export const About = () => {
     >
       <div className="container mx-auto px-8 md:px-16 lg:px-24">
         <div className="flex flex-col md:flex-row items-center md:space-x-12">
-          <div className="w-72 aspect-[3/4] relative overflow-hidden mb-8 md:mb-0">
-            <img
-              src={ProfilePic}
-              alt="Profile"
-              className="w-full h-full rounded object-cover object-[50%_15%] scale-[0.95]"
-            />
-          </div>
+          {hasProfilePic && (
+            <div className="w-72 aspect-[3/4] relative overflow-hidden mb-8 md:mb-0">
+              <img
+                src={publicSrc}
+                alt="Profile"
+                loading="lazy"
+                className="w-full h-full rounded object-cover object-[50%_15%] scale-[0.95]"
+                onError={() => setHasProfilePic(false)}
+                onLoad={() => setHasProfilePic(true)}
+              />
+            </div>
+          )}
           <div className="flex-1">
             <p className="text-lg text-white mb-8">
-              I&apos;m a full-stack developer who builds web applications that
+              {/* I&apos;m a full-stack developer who builds web applications that
               actually solve business problems. With a background in psychology,
               I don&apos;t just code features—I design experiences that make
-              sense to your users and drive real results.
+              sense to your users and drive real results. */}
+              At Thomson Technologies, the mission is to build modern web
+              applications that solve real-world business problems through
+              thoughtful design and clean, scalable code. By combining
+              full-stack development with an understanding of user behavior,
+              every product is built to be intuitive, effective, and
+              results-driven.
             </p>
             <p className="text-lg text-white mb-8">
-              Whether you need a custom web app, a Shopify e-commerce store, or
+              {/* Whether you need a custom web app, a Shopify e-commerce store, or
               a complete full-stack solution, I handle everything from the
               frontend to the backend. You get direct communication, clean code,
-              and a partner who cares about your success.
+              and a partner who cares about your success. */}
+              From custom web apps to Shopify stores and complete full-stack
+              solutions, the focus is always the same: create software that
+              works seamlessly, communicates clearly, and delivers lasting value
+              to both businesses and their users.
             </p>
           </div>
         </div>
@@ -75,7 +91,7 @@ export const About = () => {
           <h3 className="text-2xl font-bold text-white mb-6 text-center">
             Technologies
           </h3>
-          <div className="flex flex-wrap gap-6 justify-center items-center">
+          <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-6 justify-items-center items-center max-w-4xl mx-auto">
             {[
               { name: "HTML", key: "html", icon: FaHtml5 },
               { name: "CSS", key: "css", icon: FaCss3Alt },

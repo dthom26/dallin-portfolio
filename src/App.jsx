@@ -13,6 +13,7 @@ import Experience from "./components/Experience.jsx";
 import Reviews from "./Features/Reviews/Reviews.jsx";
 import ServicesOverview from "./Features/Reviews/ServicesOverview/ServicesOverview.jsx";
 import ProjectDetail from "./components/ProjectDetail.jsx";
+import ServicesPage from "./components/Services/ServicesPage.jsx";
 import React from "react";
 
 function HomePage() {
@@ -79,6 +80,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/services" element={<ServicesPage />} />
         <Route path="/project/:projectId" element={<ProjectDetail />} />
       </Routes>
       <Popup

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Star, Quote } from "lucide-react";
 import styles from "../Reviews.module.css";
 
@@ -45,10 +45,28 @@ export function ReviewRating({ rating, maxRating = 5 }) {
 
 // Review text content
 export function ReviewContent({ text }) {
+  const textRef = useRef(null);
+  const [showFade, setShowFade] = useState(false);
+
+  const updateFade = useCallback(() => {
+    const el = textRef.current;
+    if (!el) return;
+    const hasOverflow = el.scrollHeight > el.clientHeight;
+    const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 4;
+    setShowFade(hasOverflow && !atBottom);
+  }, []);
+
+  useEffect(() => {
+    updateFade();
+  }, [text, updateFade]);
+
   return (
     <div className={styles.reviewContent}>
       <Quote className={styles.quoteIcon} size={32} />
-      <p className={styles.reviewText}>{text}</p>
+      <p ref={textRef} className={styles.reviewText} onScroll={updateFade}>
+        {text}
+      </p>
+      {showFade && <div className={styles.scrollFade} />}
     </div>
   );
 }

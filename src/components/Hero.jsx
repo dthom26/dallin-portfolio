@@ -1,4 +1,4 @@
-import ProfilePic from "../assets/images/ProfilePic.png";
+import React, { useState } from "react";
 import Button from "./Button";
 import Typewriter from "./Typewriter";
 import useScrollReveal, { scrollRevealClass } from "../hooks/useScrollReveal";
@@ -13,6 +13,7 @@ export const Hero = () => {
     "Modern Web Solutions",
   ];
   const [isVisible, ref] = useScrollReveal({ threshold: 0.2 });
+  const [showHeroImage, setShowHeroImage] = useState(true);
 
   return (
     <div
@@ -24,14 +25,17 @@ export const Hero = () => {
       <div className="max-w-4xl mx-auto px-4">
         {/* Profile Image with modern styling */}
         <div className="mb-8 flex justify-center">
-          {/* <div className="profile-gradient-border">
-            <img
-              src={ProfilePic}
-              alt="Dallin Thomson"
-              className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover object-top 
-                       shadow-2xl shadow-blue-500/20 transform transition-transform duration-300 hover:scale-105"
-            />
-          </div> */}
+          {showHeroImage && (
+            <div className="profile-gradient-border">
+              <img
+                src="/images/ProfilePic.png"
+                alt="Dallin Thomson"
+                loading="lazy"
+                onError={() => setShowHeroImage(false)}
+                className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover object-top shadow-2xl shadow-blue-500/20 transform transition-transform duration-300 hover:scale-105"
+              />
+            </div>
+          )}
         </div>
 
         {/* Main Hero Content */}
@@ -40,7 +44,10 @@ export const Hero = () => {
             <span className="block mb-2">Hi, Welcome to</span>
             <span
               className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4"
-              style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", fontWeight: 700 }}
+              style={{
+                fontFamily: "'Space Grotesk', system-ui, sans-serif",
+                fontWeight: 700,
+              }}
             >
               Thomson Technologies
             </span>
@@ -67,7 +74,7 @@ export const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button href="#experience" title="View My Work" />
+            <Button href="#projects" title="View My Work" />
             <a
               href="#contact"
               className="px-8 py-3 border-2 border-white/20 text-white rounded-full 

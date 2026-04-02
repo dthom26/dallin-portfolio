@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const navLinks = [
   { href: "#aboutMe", label: "About" },
-  { href: "#services", label: "Services" },
+  { href: "/services", label: "Services" },
   // { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
@@ -11,11 +12,27 @@ const navLinks = [
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   // Smooth scroll and active link highlight
   const handleNavClick = (href) => {
+    // If internal route, use router navigation
+    if (href && href.startsWith("/")) {
+      navigate(href);
+      setActive(href);
+      setIsOpen(false);
+      return;
+    }
+    // Hash link — if not on home page, navigate there first
+    if (location.pathname !== "/") {
+      navigate("/" + href);
+      setActive(href);
+      setIsOpen(false);
+      return;
+    }
     setActive(href);
     const el = document.querySelector(href);
     if (el) {
@@ -23,6 +40,28 @@ export const Navbar = () => {
     }
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    // Update active link when location changes
+    if (location && location.pathname) {
+      setActive(location.pathname);
+    }
+    // Scroll to hash after navigating to home page
+    if (location.pathname === "/" && location.hash) {
+      const scroll = () => {
+        const el = document.querySelector(location.hash);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      };
+      const el = document.querySelector(location.hash);
+      if (el) {
+        scroll();
+      } else {
+        setTimeout(scroll, 100);
+      }
+    }
+  }, [location]);
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-card/70 shadow-lg transition-all">

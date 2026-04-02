@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import useScrollReveal, { scrollRevealClass } from "../hooks/useScrollReveal";
 import useScrollRevealOnce from "../hooks/useScrollRevealOnce";
 
-function ProjectCard3D({ project, position, totalCards, currentIndex }) {
+function ProjectCard3D({
+  project,
+  position,
+  totalCards,
+  currentIndex,
+  radius,
+}) {
   const navigate = useNavigate();
 
   // Calculate the angle for each card in the circle
   const anglePerCard = 360 / totalCards;
   const angle = (position - currentIndex) * anglePerCard;
-
-  // Calculate radius (distance from center) - adjust this for wider/narrower carousel
-  const radius = 280;
 
   // Calculate scale and opacity based on position
   const normalizedPosition =
@@ -38,14 +41,12 @@ function ProjectCard3D({ project, position, totalCards, currentIndex }) {
     <div
       className="absolute w-64 transition-all duration-700 ease-in-out"
       style={{
-        transform: `rotateY(${angle}deg) translateZ(${radius}px) scale(${scale})`,
+        transform: `translate(-50%,-50%) rotateY(${angle}deg) translateZ(${radius}px) scale(${scale})`,
         opacity: opacity,
         zIndex: zIndex,
         pointerEvents: isFront ? "auto" : "none",
         left: "50%",
         top: "50%",
-        marginLeft: "-8rem", // -w-64/2 to center
-        marginTop: "-12rem", // approximate center for card height
       }}
     >
       <div className="bg-card/90 border border-primary/20 rounded-xl p-4 shadow-lg shadow-primary/30 hover:bg-card/95 transition hover:shadow-xl transform hover:scale-105 relative backface-hidden">
@@ -71,40 +72,65 @@ function ProjectCard3D({ project, position, totalCards, currentIndex }) {
 
 export default function ProjectCarousel3D({ projects }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
+  const [radius, setRadius] = useState(280);
+  const stageRef = useRef(null);
+  const touchStartRef = useRef(null);
+  const touchEndRef = useRef(null);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % projects.length);
-  };
+  }, [projects.length]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
-  };
+  }, [projects.length]);
 
-  // Touch handlers for swipe functionality
-  const onTouchStart = (e) => {
-    setTouchEnd(null); // Reset touchEnd
-    setTouchStart(e.targetTouches[0].clientX);
-  };
+  // Responsive radius for 3D spread
+  useEffect(() => {
+    const updateRadius = () => {
+      const w = window.innerWidth;
+      if (w < 640) setRadius(180);
+      else if (w < 1024) setRadius(220);
+      else setRadius(280);
+    };
+    updateRadius();
+    window.addEventListener("resize", updateRadius);
+    return () => window.removeEventListener("resize", updateRadius);
+  }, []);
 
-  const onTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
+  // Non-passive touch listeners attached directly to DOM so preventDefault() works
+  useEffect(() => {
+    const el = stageRef.current;
+    if (!el) return;
 
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
+    const onTouchStart = (e) => {
+      touchEndRef.current = null;
+      touchStartRef.current = e.targetTouches[0].clientX;
+    };
 
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
+    const onTouchMove = (e) => {
+      e.preventDefault();
+      touchEndRef.current = e.targetTouches[0].clientX;
+    };
 
-    if (isLeftSwipe) {
-      handleNext();
-    } else if (isRightSwipe) {
-      handlePrev();
-    }
-  };
+    const onTouchEnd = () => {
+      if (touchStartRef.current === null || touchEndRef.current === null)
+        return;
+      const distance = touchStartRef.current - touchEndRef.current;
+      if (distance > 50) handleNext();
+      else if (distance < -50) handlePrev();
+    };
+
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchmove", onTouchMove, { passive: false });
+    el.addEventListener("touchend", onTouchEnd);
+
+    return () => {
+      el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchmove", onTouchMove);
+      el.removeEventListener("touchend", onTouchEnd);
+    };
+  }, [handleNext, handlePrev]);
 
   // Keyboard navigation
   React.useEffect(() => {
@@ -151,26 +177,15 @@ export default function ProjectCarousel3D({ projects }) {
           style={{ transitionDelay: "200ms" }}
         >
           {/* 3D Carousel Container */}
-          <div className="relative w-full h-[550px] sm:h-[550px] md:h-[600px] flex items-center justify-center overflow-x-hidden">
-            {/* Navigation Buttons - Desktop */}
-            <button
-              onClick={handlePrev}
-              className="hidden md:block absolute left-8 top-1/2 -translate-y-1/2 z-50 bg-slate-900/90 hover:bg-slate-800 border border-primary/30 text-accent hover:text-white p-3 rounded-full shadow-xl transition-all hover:scale-110"
-              aria-label="Previous Project"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-
+          <div className="relative w-full h-[480px] sm:h-[480px] md:h-[550px] lg:h-[600px] flex items-center justify-center overflow-x-hidden">
             {/* 3D Stage */}
             <div
-              className="relative w-full max-w-4xl h-full flex items-center justify-center touch-pan-y"
+              ref={stageRef}
+              className="relative w-full max-w-4xl h-full flex items-center justify-center touch-none mx-auto"
               style={{
                 perspective: "1200px",
                 perspectiveOrigin: "center center",
               }}
-              onTouchStart={onTouchStart}
-              onTouchMove={onTouchMove}
-              onTouchEnd={onTouchEnd}
             >
               <div
                 className="relative w-full h-full"
@@ -185,18 +200,32 @@ export default function ProjectCarousel3D({ projects }) {
                     position={idx}
                     totalCards={projects.length}
                     currentIndex={currentIndex}
+                    radius={radius}
                   />
                 ))}
               </div>
             </div>
 
-            <button
-              onClick={handleNext}
-              className="hidden md:block absolute right-8 top-1/2 -translate-y-1/2 z-50 bg-slate-900/90 hover:bg-slate-800 border border-primary/30 text-accent hover:text-white p-3 rounded-full shadow-xl transition-all hover:scale-110"
-              aria-label="Next Project"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
+            {/* Overlayed arrows anchored to carousel container */}
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="relative w-full max-w-4xl mx-auto px-4 md:px-6 lg:px-8 pointer-events-none h-full">
+                <button
+                  onClick={handlePrev}
+                  className="hidden md:inline-flex absolute left-4 top-1/2 -translate-y-1/2 z-50 bg-slate-900/90 hover:bg-slate-800 border border-primary/30 text-accent hover:text-white p-2 rounded-full shadow-xl transition-all hover:scale-105 pointer-events-auto"
+                  aria-label="Previous Project"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+
+                <button
+                  onClick={handleNext}
+                  className="hidden md:inline-flex absolute right-4 top-1/2 -translate-y-1/2 z-50 bg-slate-900/90 hover:bg-slate-800 border border-primary/30 text-accent hover:text-white p-2 rounded-full shadow-xl transition-all hover:scale-105 pointer-events-auto"
+                  aria-label="Next Project"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Mobile Navigation */}
@@ -252,9 +281,9 @@ export default function ProjectCarousel3D({ projects }) {
 
           {/* Instructions */}
           <div className="text-center mt-6 text-gray-500 text-sm">
-            <span className="hidden md:inline">
+            {/* <span className="hidden md:inline">
               Use arrow keys or buttons to navigate
-            </span>
+            </span> */}
             <span className="md:hidden">Swipe or use buttons to navigate</span>
           </div>
         </div>

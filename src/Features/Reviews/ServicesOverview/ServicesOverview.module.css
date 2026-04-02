@@ -34,6 +34,8 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     animation: fadeInUp 1s ease-out;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 /* Center last 2 cards on desktop (3-column layout) */
@@ -67,6 +69,8 @@
     .servicesGrid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 1.5rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
 
     /* Reset desktop grid spans */
@@ -92,6 +96,8 @@
     .servicesGrid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 1.25rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
     /* Reset desktop grid spans */
@@ -126,6 +132,13 @@
     .servicesGrid {
         grid-template-columns: 1fr !important;
         gap: 1.5rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .ctaContainer {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
     }
 
     /* Reset all custom positioning on mobile */
